@@ -1,0 +1,26 @@
+import React, { useState } from 'react';
+import Sidebar from './components/Sidebar/Sidebar';
+import ChatArea from './components/ChatArea/ChatArea';
+import MessageInput from './components/MessageInput/MessageInput';
+import SideNavigationBar from './components/SideNavigationBar/SideNavigationBar';
+import './Home.css';
+import { useTheme } from './components/ThemeContext';
+
+
+function Home() {
+  const { isDarkMode, toggleTheme } = useTheme();
+
+
+  return (
+    <div className={`app ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+      <SideNavigationBar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+      <Sidebar isDarkMode={isDarkMode} /> 
+        <div className="main">  
+          <ChatArea isDarkMode={isDarkMode} />
+          <MessageInput isDarkMode={isDarkMode} />
+        </div>
+    </div>
+  );
+}
+
+export default Home;

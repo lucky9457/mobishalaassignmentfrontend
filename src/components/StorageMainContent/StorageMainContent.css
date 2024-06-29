@@ -1,0 +1,163 @@
+.storage-main-content {
+
+    padding: 20px;
+    background-color: #f0f0f0;
+    height: 100vh;
+  }
+
+  .dark-mode{
+    background-color: #000;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .get-more-storage {
+    background-color: #ffd700;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .usage-info {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .table-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .dark-mode .table-container{
+    background-color: #343434;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  
+  
+  th, td {
+    padding: 15px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f9f9f9;
+  }
+
+  .dark-mode th{
+    background-color: #343434;
+    border-bottom: solid 1px #ffffff;
+  }
+  
+  .empty-message {
+    text-align: center;
+    color: #666;
+  }
+
+  .storagebtn{
+    background-color: #ffd700;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+  }
+  .storagenamehead{
+    margin-left: 12px;
+  }
+  .getmorestoragebtnContainer{
+    display: flex;
+    width: 30%;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .inputraneg{
+    background-color: grey;
+
+    width: 100%;
+    border-radius: solid grey 1px;
+    color: grey;
+  }
+
+
+  .slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+}
+.searchCon{
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+
+}
+.searchicon{
+    color: rgb(0, 0, 0);
+
+}
+.dark-mode .searchicon{
+    color: black;
+}
+.searchEle{
+    outline: none;
+    margin-left: 10px;
+    border: none;
+}
+.searchContainerHEad{
+    background: #d3d3d3;
+    
+}
+.seachIconheader{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+
+.mainnnnnFrstrow{
+    width: 100%;
+}

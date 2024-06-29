@@ -1,0 +1,9 @@
+.search-con{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.contentinSearch{
+    margin-left: 20px;
+}
