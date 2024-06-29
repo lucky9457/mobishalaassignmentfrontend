@@ -4,6 +4,7 @@ import ChatArea from './components/ChatArea/ChatArea';
 import MessageInput from './components/MessageInput/MessageInput';
 import SideNavigationBar from './components/SideNavigationBar/SideNavigationBar';
 import './Home.css';
+import Chatbot from './components/Chatbot/Chatbot';
 import { useTheme } from './components/ThemeContext';
 
 
@@ -16,8 +17,7 @@ function Home() {
       <SideNavigationBar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
       <Sidebar isDarkMode={isDarkMode} /> 
         <div className="main">  
-          <ChatArea isDarkMode={isDarkMode} />
-          <MessageInput isDarkMode={isDarkMode} />
+          <Chatbot isDarkMode={isDarkMode}/>
         </div>
     </div>
   );
