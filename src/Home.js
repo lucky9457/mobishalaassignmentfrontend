@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import Sidebar from './components/Sidebar/Sidebar';
-import ChatArea from './components/ChatArea/ChatArea';
-import MessageInput from './components/MessageInput/MessageInput';
+
 import SideNavigationBar from './components/SideNavigationBar/SideNavigationBar';
 import './Home.css';
 import Chatbot from './components/Chatbot/Chatbot';
-import { useTheme } from './components/ThemeContext';
 
+import { useTheme } from './components/ThemeContext';
 
 function Home() {
   const { isDarkMode, toggleTheme } = useTheme();

@@ -21,7 +21,7 @@ const Chatbot = ({isDarkMode}) => {
         messages: [{ role: 'user', content: input }],
       }, {
         headers: {
-          'Authorization': `Bearer sk-proj-Kk5zb7hnWvpEjXjDijIJT3BlbkFJnLFNDfuvBXtZrelXAaYn`,
+          'Authorization': `Bearer  sk-proj-Kk5zb7hnWvpEjXjDijIJT3BlbkFJnLFNDfuvBXtZrelXAaYn`,
           'Content-Type': 'application/json',
         },
       });
@@ -32,6 +32,7 @@ const Chatbot = ({isDarkMode}) => {
       console.error('Error fetching the chatbot response:', error);
     }
   };
+
 
   return (
     <div className={`chat-area ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
