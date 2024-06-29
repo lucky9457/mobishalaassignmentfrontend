@@ -2,6 +2,8 @@
 import "./Chatbot.css"
 import React, { useState } from 'react';
 import axios from 'axios';
+const cors = require('cors');
+
 
 const Chatbot = ({isDarkMode}) => {
   const [input, setInput] = useState('');
@@ -21,10 +23,12 @@ const Chatbot = ({isDarkMode}) => {
         messages: [{ role: 'user', content: input }],
       }, {
         headers: {
-          'Authorization': `Bearer  sk-proj-Kk5zb7hnWvpEjXjDijIJT3BlbkFJnLFNDfuvBXtZrelXAaYn`,
+          'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
           'Content-Type': 'application/json',
         },
       });
+
+      
 
       const botMessage = { sender: 'bot', text: response.data.choices[0].message.content };
       setMessages([...messages, userMessage, botMessage]);
