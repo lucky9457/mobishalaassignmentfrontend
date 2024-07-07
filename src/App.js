@@ -10,10 +10,11 @@ const App = () => (
   <BrowserRouter>
   <ThemeProvider>
     <Routes>
-      <Route exact path="/" Component={Home}/>
+      <Route exact path='/' Component={StorageComponent}/>
+      <Route exact path="/chat" Component={Home}/>
       <Route exact path="/search" Component={Search}/>
       <Route exact path="/profiles" Component={Profiles}/>
-      <Route exact path='/Cloud' Component={StorageComponent}/>
+      
     </Routes>
   </ThemeProvider>
     

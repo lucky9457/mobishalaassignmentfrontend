@@ -4,6 +4,7 @@
     padding: 20px;
     display: flex;
     min-height: 100vh;
+    transition: ease 0.5s;
     flex-direction: column;
     align-items: center;
     border-right: solid 0.5px grey;

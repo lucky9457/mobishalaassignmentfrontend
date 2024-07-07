@@ -6,14 +6,31 @@ import {faSun, faMoon,faMagnifyingGlass, faUser,faCloud, faHome, faComment, faAd
 import './SideNavigationBar.css';
 
 function SideNavigationBar({ toggleTheme, isDarkMode }) {
+  const darkmodeclass = isDarkMode?"whiteimage":""
   return (
     <div className={`side-navigation-bar ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-      <div className='logoCont'>
-        <img src="https://res.cloudinary.com/dcwxu3d5g/image/upload/v1719643019/chintu/Untitled_logo_1_free-file_1_w6whlo.jpg" className='logoimage'/>
-      </div>
-      <ul>
+      <div>
+
       
-        <Link className='linkele' to="/">
+      {isDarkMode?(
+        <div className='logoCont'>
+          <img src="https://res.cloudinary.com/dcwxu3d5g/image/upload/v1719660210/chintu/Legai_1_c1olwj.png" className={`logoimage ${isDarkMode}`}/>
+        </div>
+      ):
+      (
+        <div className='logoCont'>
+          <img src="https://res.cloudinary.com/dcwxu3d5g/image/upload/v1719658345/chintu/Legai_yug6fi.png" className={`logoimage ${isDarkMode}`}/>
+        </div>
+      )
+      }
+      
+      <ul className='tabiconsContainer'>
+
+      <Link className='linkele' to="/">
+        <li>  <FontAwesomeIcon icon={faCloud} />   </li>
+        </Link>
+      
+        <Link className='linkele' to="/chat">
         {" "}
         <li> <FontAwesomeIcon icon={faComment} /> </li>
          {" "}
@@ -25,9 +42,7 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
        <li> <FontAwesomeIcon icon={faMagnifyingGlass} /></li>
         </Link>
 
-        <Link className='linkele' to="/cloud">
-        <li>  <FontAwesomeIcon icon={faCloud} />   </li>
-        </Link>
+        
 
             <Link className='linkele' to="/profiles">
             <li><FontAwesomeIcon icon={faUser} /></li>
@@ -37,11 +52,13 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
 
         
       </ul>
+      </div>
       <ul>
         <li onClick={toggleTheme} className="theme-toggle">
-          <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
+          <FontAwesomeIcon className='iconToggle' icon={isDarkMode ? faSun : faMoon} />
         </li>
       </ul>
+      
       
     </div>
   );

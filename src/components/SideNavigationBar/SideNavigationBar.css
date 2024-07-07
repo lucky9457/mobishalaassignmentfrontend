@@ -3,11 +3,14 @@
     background-color: #333;
     color: white;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: column;
     align-items: center;
     border-right: solid 0.5px rgb(215, 200, 200);
     padding-right: 10px;
+    min-height: 100vh;
+    height: 100vh;
+    transition: ease 0.5s;
   }
 
   ul {
@@ -17,6 +20,10 @@
     padding: 0px;
     padding-left: 0px;
     margin: 0px;
+  }
+
+  .tabiconsContainer{
+    margin-top: 30px;
   }
   
   li {
@@ -36,10 +43,7 @@
     color: #f3f3f3;
   }
   
-  .theme-toggle {
-    margin-top: 20px;
-  }
-
+ 
 
   .light-mode .side-navigation-bar   {
     background-color: #f3f3f3;
@@ -60,15 +64,30 @@
   
   .theme-toggle {
     margin-top: 20px;
+   
+    width: 90%;
+    height: 35px;
+    padding-bottom: 0px;
+    margin-bottom: 60px;
   }
+  
+  .iconToggle{
+    padding-bottom: 35px;
+    margin-bottom: 0px;
+  }
+
   .logoCont{
     width: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
- 
+    margin-top: 6px;
     margin-left: 10px;
   }
   .logoimage{
-    width: 60%;
+    width: 100px;
+  }
+
+  .dark-mode .logoimage{
+    color: white;
   }

@@ -6,7 +6,7 @@ import { faFileAlt, faFileContract, faFileSignature, faFileUpload, faFileImage }
 function SidebarSearch({ isDarkMode }) {
   return (
     <div className={`sidebarsearch ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-      <button className="activate-pro">Activate PRO</button>
+      <button className="activate-pro">Legal Ai Assistant</button>
       <hr className='hrline'/>
       <div className="docs-section">
         <h2>Docs</h2>
