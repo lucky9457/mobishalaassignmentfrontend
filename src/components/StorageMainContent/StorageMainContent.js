@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Popup from "reactjs-popup";
-import { Document, Page, pdfjs } from 'react-pdf';
+
 import { ClipLoader } from 'react-spinners';
 
 import "./StorageMainContent.css";
@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
-
+/*
 // Set the workerSrc for PDF.js
 import { pdfjs as PdfJsLib } from 'react-pdf';
 import 'pdfjs-dist/webpack';
@@ -17,6 +17,7 @@ import 'pdfjs-dist/webpack';
 PdfJsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${PdfJsLib.version}/pdf.worker.min.js`;
 
 
+*/
 
 function StorageMainContent({ isDarkMode }) {
   const [title, setTitle] = useState("");
