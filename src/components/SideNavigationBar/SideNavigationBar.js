@@ -26,14 +26,16 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
       
       <ul className='tabiconsContainer'>
 
-      <Link className='linkele' to="/">
-        <li className='litag'>  <FontAwesomeIcon icon={faCloud} />   </li>
-        </Link>
       
-        <Link className='linkele' to="/chat">
+      
+        <Link className='linkele' to="/">
         {" "}
         <li className='litag'> <FontAwesomeIcon icon={faComment} /> </li>
          {" "}
+        </Link>
+        
+        <Link className='linkele' to="/dataset">
+        <li className='litag'>  <FontAwesomeIcon icon={faCloud} />   </li>
         </Link>
         
         
