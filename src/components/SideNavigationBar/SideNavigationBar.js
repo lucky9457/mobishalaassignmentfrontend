@@ -27,25 +27,25 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
       <ul className='tabiconsContainer'>
 
       <Link className='linkele' to="/">
-        <li>  <FontAwesomeIcon icon={faCloud} />   </li>
+        <li className='litag'>  <FontAwesomeIcon icon={faCloud} />   </li>
         </Link>
       
         <Link className='linkele' to="/chat">
         {" "}
-        <li> <FontAwesomeIcon icon={faComment} /> </li>
+        <li className='litag'> <FontAwesomeIcon icon={faComment} /> </li>
          {" "}
         </Link>
         
         
        
         <Link className='linkele' to="/search">
-       <li> <FontAwesomeIcon icon={faMagnifyingGlass} /></li>
+       <li className='litag'> <FontAwesomeIcon icon={faMagnifyingGlass} /></li>
         </Link>
 
         
 
             <Link className='linkele' to="/profiles">
-            <li><FontAwesomeIcon icon={faUser} /></li>
+            <li className='litag'><FontAwesomeIcon icon={faUser} /></li>
             </Link>
             
             
@@ -53,8 +53,8 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
         
       </ul>
       </div>
-      <ul>
-        <li onClick={toggleTheme} className="theme-toggle">
+      <ul className='tabiconsContainer'>
+        <li  onClick={toggleTheme} className="litag theme-toggle">
           <FontAwesomeIcon className='iconToggle' icon={isDarkMode ? faSun : faMoon} />
         </li>
       </ul>

@@ -1,11 +1,15 @@
 // src/Chatbot.js
 import "./Chatbot.css"
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import axios from 'axios';
 import Popup from "reactjs-popup";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus,faMinus, faPaperPlane,  faMicrophone,faCamera, faFileImage } from '@fortawesome/free-solid-svg-icons';
 import { v4 as uuidv4 } from 'uuid'
+import { IoReloadCircleOutline } from 'react-icons/io5';
+import { marked } from 'marked';
+import Message from './Message';
+import DOMPurify from 'dompurify';
 import { text } from "@fortawesome/fontawesome-svg-core";
 import { json } from "react-router-dom";
 
@@ -153,13 +157,27 @@ const Chatbot = ({isDarkMode}) => {
     text:"write your custom"
   }])
 
-  console.log(Lists.legalConsumersList.content)
-  const getlocal = JSON.parse(localStorage.getItem('promptsList'))
-  if (getlocal!==null && promptList.length===1){
-    setPromptList((prevState)=>([...prevState,...getlocal]))
-  }
+  const [isTyping, setIsTyping] = useState(false);
+  const [botMessage, setBotMessage] = useState(null);
 
   
+
+
+  useEffect(() => {
+    // Load chat history from local storage
+      const savedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+      setMessages(savedMessages);
+      console.log(Lists.legalConsumersList.content)
+      const getlocal = JSON.parse(localStorage.getItem('promptsList'))
+      if (getlocal!==null && promptList.length===1){
+        setPromptList((prevState)=>([...prevState,...getlocal]))
+      }
+  }, []);
+  
+  useEffect(() => {
+    // Save chat history to local storage whenever messages state changes
+    localStorage.setItem('chatMessages', JSON.stringify(messages));
+  }, [messages]);
 
   const [showContent, setShowContent] = useState({
     customPrompts: false,
@@ -179,18 +197,22 @@ const Chatbot = ({isDarkMode}) => {
     }));
   };
 
-  const sendMessage = async () => {
-    if (input.trim() === '') return;
+  const sendMessage = async (message, regenerate = false) => {
 
-    const userMessage = { sender: 'user', text: input };
-    setMessages([...messages, userMessage]);
+
+    const userMessage = { sender: 'user', text: message };
+    if (!regenerate) {
+      setMessages((prevMessages) => [...prevMessages, userMessage]);
+    }
+    
 
     setInput(''); 
+    setIsTyping(true);
 
     try {
       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
         model: 'gpt-4o',
-        messages: [{ role: 'user', content: input }],
+        messages: [{ role: 'user', content: message }],
       }, {
         headers: {
           'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
@@ -200,12 +222,39 @@ const Chatbot = ({isDarkMode}) => {
 
       
 
-      const botMessage = { sender: 'bot', text: response.data.choices[0].message.content };
-      setMessages([...messages, userMessage, botMessage]);
+      let botMessageContent = response.data.choices[0].message.content;
+      botMessageContent = formatReply(botMessageContent);
+      setBotMessage(botMessageContent);
     } catch (error) {
       console.error('Error fetching the chatbot response:', error);
+    } finally {
+      setIsTyping(false);
     }
   };
+
+  const formatReply = (reply) => {
+    const html = marked(reply);
+    return DOMPurify.sanitize(html);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (input.trim()) {
+      sendMessage(input);
+    }
+  };
+
+  const handleRegenerate = (message) => {
+    sendMessage(message, true);
+  };
+
+  useEffect(() => {
+    if (botMessage) {
+      const botMessageObj = { sender: 'bot', text: botMessage };
+      setMessages((prevMessages) => [...prevMessages, botMessageObj]);
+      setBotMessage(null);
+    }
+  }, [botMessage]);
 
   console.log(process.env.REACT_APP_OPENAI_API_KEY)
 
@@ -278,15 +327,25 @@ const Chatbot = ({isDarkMode}) => {
             }
             else{
                 return (
+
                     <div key={index} className="chatCont" style={{ textAlign: msg.sender === 'user' ? 'right' : 'left' }} >
-                        <p className={`${isDarkMode ? 'senderDark' : 'senderlight'} ${msg.sender==='user'?"senderClass":"botclass"}`} >{msg.text}</p>
+                        {/*<p className={`${isDarkMode ? 'senderDark' : 'senderlight'} ${msg.sender==='user'?"senderClass":"botclass"}`} >{msg.text}</p>*/}
+                        {/*   <span className={`${isDarkMode ? 'senderDark' : 'senderlight'} ${msg.sender==='user'?"senderClass":"botclass"}`} >{msg.text}</span>*/}
+                        <Message istyping={isTyping} key={index} sender={msg.sender} text={msg.text} />
+                      
+                          <IoReloadCircleOutline
+                          className="regenerate-icon"
+                          onClick={() => handleRegenerate(msg.text)}
+                        />
+                       
+                        
+                        
                     </div>
+                    
                 )
             }
-           
-
-            
        })}
+              {isTyping && <div style={{color:"red"}} className="  message bot typing">legAI is typing...</div>}
       </div>
       <div className="promptBtnContainer">
         <button onClick={popupbtnClicked} className="prompsBtn">
@@ -452,7 +511,7 @@ const Chatbot = ({isDarkMode}) => {
           </Popup>
       </div>
       <div className="inputandSendbtnContainer">
-        <div className="inputSendContn">
+        <form  onSubmit={handleSubmit} className="inputSendContn">
         <FontAwesomeIcon className="micIcon" icon={faMicrophone} />
           <FontAwesomeIcon className="micIcon" icon={faCamera} />
             <input
@@ -462,13 +521,13 @@ const Chatbot = ({isDarkMode}) => {
             placeholder="Ask Your Question?"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' ? sendMessage() : null}
+            
             />
-        <button className="sendMsgbtn" onClick={sendMessage} >
+        <button className="sendMsgbtn" >
               <FontAwesomeIcon icon={faPaperPlane} />
 
         </button>
-        </div>
+        </form>
           
       </div>
       

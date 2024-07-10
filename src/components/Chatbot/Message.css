@@ -1,0 +1,141 @@
+.spansender{
+  width: 500px;
+  background-color: red;
+}
+
+.spanmesage{
+  background-color: #fff2f2;
+  padding-left: 10px;
+  margin-right: 0px;
+  color: #000000;
+  border-radius: 10px;
+  transition: ease 1s;
+  width: 600px;
+  padding-right: 10px;
+}
+
+.loading-icon {
+  font-size: 24px; /* Adjust icon size */
+  color: #000000; /* Adjust icon color */
+  animation: spin 1s linear infinite; /* Optional: Add animation for spinning */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.message {
+  display: flex;
+
+  width: 500px;
+
+
+}
+
+.regenerate-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 24px; /* Adjust icon size */
+   /* Adjust icon color */
+  transition: transform 0.2s;
+}
+
+.regenerate-icon:hover {
+  transform: rotate(90deg); /* Optional: Add a rotation effect on hover */
+}
+
+.typing {
+  font-style: italic;
+  color: #000000;
+}
+
+.input-form {
+  display: flex;
+  margin-top: 20px;
+}
+
+.input-form input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.input-form button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.message-content {
+  width: 100%;
+  margin-right: 10px;
+  display: flex;
+
+  flex-direction: column;
+  align-items: stretch;
+  
+}
+
+.copy-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  
+  color: black;
+  
+}
+
+.copy-button:hover {
+  transition: ease-in-out 1s;
+  color: blue;
+}
+.share-button:hover{
+  transition: ease-in-out 1s;
+  color: blue;
+}
+
+.message.bot {
+  display: flex;
+  align-items: start;
+}
+
+.regenerate-icon {
+  cursor: pointer;
+  font-size: 1.5em;
+  color: #007bff;
+}
+
+.regenerate-icon:hover {
+  color: #007bff;
+}
+.dark-mode .regenerate-icon{
+  color: #007bff;
+}
+
+.typing {
+  color: rgb(0, 0, 0);
+  font-style: italic;
+}
+
+.share-button{
+  color: black;
+  background: none;
+  font-size: 1.2em;
+}
+.message-actions {
+  display: flex;
+  gap: 3px;
+  margin-top: 8px;
+}
+
+.copy-button, .share-button, .audio-button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 0.9em;
+}
+
+.copy-button:hover, .share-button:hover, .audio-button:hover {
+  color: #0056b3;
+}

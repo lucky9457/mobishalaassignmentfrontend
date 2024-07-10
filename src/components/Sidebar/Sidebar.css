@@ -52,7 +52,7 @@
     margin-top: 20px;
   }
   
-  .pinned-chats h3, .history h3 {
+  .pinned-chats .h3tag, .history .h3tag {
     margin-bottom: 10px;
   }
   .sidebar {

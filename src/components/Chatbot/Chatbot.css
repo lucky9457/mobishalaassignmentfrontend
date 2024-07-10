@@ -405,3 +405,23 @@
   transition: ease 2s;
 
 }
+
+.chatcontainer{
+  display: flex;
+  align-items: center;
+
+}
+
+
+
+.chatCont{
+  display: flex;
+  align-items: flex-end;
+  width: 500px;
+}
+
+
+.typing{
+  padding: 10px;
+  transition: ease 1s;
+}

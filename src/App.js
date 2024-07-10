@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import {BrowserRouter,Routes, Route} from 'react-router-dom'
 import Home from './Home'
 import Search from './components/Search/Search';
@@ -6,7 +7,12 @@ import StorageComponent from './components/StorageComponent/StorageComponent';
 import Profiles from './components/Profiles/Profiles';
 import './Home.css';
 
-const App = () => (
+
+const App = () => {
+  useEffect(() => {
+    document.title = 'LegAi';
+  }, []);
+  return(
   <BrowserRouter>
   <ThemeProvider>
     <Routes>
@@ -20,5 +26,5 @@ const App = () => (
     
     
   </BrowserRouter>
-)
+)}
 export default App;

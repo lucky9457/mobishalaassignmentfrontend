@@ -15,11 +15,11 @@ function Sidebar({ isDarkMode }) {
         <button className="new-chat">New Chat
         <FontAwesomeIcon className='pencilIcon' icon={faPencil} />
         </button>
-        <h3>Pinned chats</h3>
+        <h3 className='h3tag'>Pinned chats</h3>
         <p>No pinned chats yet :(</p>
       </div>
       <div className="history">
-        <h3>History</h3>
+        <h3 className='h3tag'>History</h3>
             <p>No history yet</p>
       </div>
     </div>
