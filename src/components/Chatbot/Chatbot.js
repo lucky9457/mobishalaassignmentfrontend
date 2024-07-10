@@ -332,12 +332,12 @@ const Chatbot = ({isDarkMode}) => {
                         {/*<p className={`${isDarkMode ? 'senderDark' : 'senderlight'} ${msg.sender==='user'?"senderClass":"botclass"}`} >{msg.text}</p>*/}
                         {/*   <span className={`${isDarkMode ? 'senderDark' : 'senderlight'} ${msg.sender==='user'?"senderClass":"botclass"}`} >{msg.text}</span>*/}
                         <Message istyping={isTyping} key={index} sender={msg.sender} text={msg.text} />
-                      
+                        <button  className="regenratebutton">
                           <IoReloadCircleOutline
                           className="regenerate-icon"
                           onClick={() => handleRegenerate(msg.text)}
                         />
-                       
+                        </button>
                         
                         
                     </div>

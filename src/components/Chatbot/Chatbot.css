@@ -425,3 +425,13 @@
   padding: 10px;
   transition: ease 1s;
 }
+
+.regenerate-icon {
+  cursor: pointer;
+  font-size: 1.5em;
+  color: #007bff;
+}
+.regenratebutton{
+  background: none;
+  border: none;
+}
