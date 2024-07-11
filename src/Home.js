@@ -14,7 +14,7 @@ function Home() {
   return (
     <div className={`app ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <SideNavigationBar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
-      <Sidebar  isDarkMode={isDarkMode} /> 
+      
         <div className="main">  
           <Chatbot isDarkMode={isDarkMode}/>
         </div>

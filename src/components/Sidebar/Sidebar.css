@@ -83,3 +83,31 @@
    width: 100%;
    
  }
+ .messageuserhistory{
+  font-family: Roboto;
+  font-size: 15px;
+  height: 150px;
+  border: solid 0.5px grey;
+  padding: 10px;
+  overflow-y: scroll;
+  border-radius: 5px;
+ }
+ .historyItem{
+ 
+  padding: 10px;
+  transition: linear 0.5s;
+  border-radius: 5px;
+ }
+ .historyItem:hover{
+  color: #fdfdfd;
+  background-color: #000000;
+ }
+ /* Hide scrollbar for Chrome, Safari, and Opera */
+.messageuserhistory::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge, and Firefox */
+.messageuserhistory {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

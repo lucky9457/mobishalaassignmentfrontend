@@ -1,6 +1,6 @@
 // src/Chatbot.js
 import "./Chatbot.css"
-import React, {useEffect, useState } from 'react';
+import React, {useEffect, useState,useRef } from 'react';
 import axios from 'axios';
 import Popup from "reactjs-popup";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,6 +12,8 @@ import Message from './Message';
 import DOMPurify from 'dompurify';
 import { text } from "@fortawesome/fontawesome-svg-core";
 import { json } from "react-router-dom";
+import Sidebar from "../Sidebar/Sidebar";
+import ReactLoading from 'react-loading';
 
 
 const Lists = {
@@ -151,14 +153,18 @@ const Chatbot = ({isDarkMode}) => {
   const [messages, setMessages] = useState([]);
   const [modelopened,setmodelopened] = useState(false)
   const [customprompt,setcustomPrompt] = useState([])
+  const [lastmsgid,setlastmsgid] =useState('')
   const [newprompt,setnewPrompt] = useState({})
   const [promptList,setPromptList] = useState([{
     id:uuidv4(),
     text:"write your custom"
   }])
 
+  const messagesEndRef = useRef(null);
+
   const [isTyping, setIsTyping] = useState(false);
   const [botMessage, setBotMessage] = useState(null);
+  const [recentQueries, setRecentQueries] = useState([]);
 
   
 
@@ -168,15 +174,16 @@ const Chatbot = ({isDarkMode}) => {
       const savedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
       setMessages(savedMessages);
       console.log(Lists.legalConsumersList.content)
-      const getlocal = JSON.parse(localStorage.getItem('promptsList'))
-      if (getlocal!==null && promptList.length===1){
-        setPromptList((prevState)=>([...prevState,...getlocal]))
+      const getlocal = JSON.parse(localStorage.getItem('promptsList')) || [];
+      if (promptList.length === 1) {
+        setPromptList((prevState) => ([...prevState, ...getlocal]));
       }
   }, []);
   
   useEffect(() => {
     // Save chat history to local storage whenever messages state changes
     localStorage.setItem('chatMessages', JSON.stringify(messages));
+    scrollToBottom();
   }, [messages]);
 
   const [showContent, setShowContent] = useState({
@@ -197,10 +204,18 @@ const Chatbot = ({isDarkMode}) => {
     }));
   };
 
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const sendMessage = async (message, regenerate = false) => {
 
 
-    const userMessage = { sender: 'user', text: message };
+    const userMessage = { id:uuidv4() ,sender: 'user', text: message };
+    const userMessageses = messages.filter(msg => msg.sender === 'user');
+    setRecentQueries(userMessageses.slice(-5).reverse());
+    console.log('user',recentQueries)
+
     if (!regenerate) {
       setMessages((prevMessages) => [...prevMessages, userMessage]);
     }
@@ -210,9 +225,15 @@ const Chatbot = ({isDarkMode}) => {
     setIsTyping(true);
 
     try {
+      const conversationHistory = messages.map(msg => ({
+        role: msg.sender === 'user' ? 'user' : 'assistant',
+        content: msg.text
+      }));
+
+      conversationHistory.push({ role: 'user', content: message });
       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
         model: 'gpt-4o',
-        messages: [{ role: 'user', content: message }],
+        messages: conversationHistory,
       }, {
         headers: {
           'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
@@ -242,6 +263,7 @@ const Chatbot = ({isDarkMode}) => {
     if (input.trim()) {
       sendMessage(input);
     }
+    
   };
 
   const handleRegenerate = (message) => {
@@ -250,7 +272,8 @@ const Chatbot = ({isDarkMode}) => {
 
   useEffect(() => {
     if (botMessage) {
-      const botMessageObj = { sender: 'bot', text: botMessage };
+      const botMessageObj = {id:uuidv4(), sender: 'bot', text: botMessage };
+      setlastmsgid(botMessageObj.id)
       setMessages((prevMessages) => [...prevMessages, botMessageObj]);
       setBotMessage(null);
     }
@@ -278,28 +301,25 @@ const Chatbot = ({isDarkMode}) => {
   const h = [{id:uuidv4(),text:"provide Custom"}]
   
 
-  const addCustomList =async ()=>{
-    const v = document.getElementById('customPromptInputEle').value
-    if(v!==''){
-          
-         
-          document.getElementById('customPromptInputEle').value=''
-          const retrieve = JSON.parse(localStorage.getItem('promptsList'))
-          const fin = [...retrieve,newprompt]
-          
-          localStorage.setItem('promptsList',JSON.stringify(fin))
-          const getCustom = localStorage.getItem('promptsList')
-          const parseCustom = JSON.parse(getCustom)
-          setPromptList(parseCustom) 
-          alert('custom Prompt Added Succesfully')
-          
+  const addCustomList = () => {
+    const v = document.getElementById('customPromptInputEle').value;
+    if (v !== '') {
+      const newPromptObj = {
+        id: uuidv4(),
+        text: v
+      };
+  
+      let retrieve = JSON.parse(localStorage.getItem('promptsList')) || [];
+      retrieve.push(newPromptObj);
+      localStorage.setItem('promptsList', JSON.stringify(retrieve));
+      setPromptList(retrieve);
+  
+      document.getElementById('customPromptInputEle').value = '';
+      alert('Custom prompt added successfully');
+    } else {
+      alert('Please provide a value');
     }
-    else{
-      alert("provide a value")
-    }
-    
-    
-  }
+  };
 
   const promptClick = (each)=>{
     document.getElementById('inputElement').value= each.text
@@ -308,15 +328,21 @@ const Chatbot = ({isDarkMode}) => {
   
   }
 
+  const clickpreviousmsg=(message)=>{
+    document.getElementById('inputElement').value= message.text
+    setInput(message.text)
+  }
+
   Lists.legalConsumersList.content.map((each)=>{
     console.log(each.text)
   })
 
   return (
+    <div className="mainnn"> 
+    <Sidebar clickprevious={clickpreviousmsg} recentQueries={recentQueries}  isDarkMode={isDarkMode} /> 
     <div className={`chat-area ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <div className="chatbox" >
         <h3>Chats</h3>
-        
         {messages.map((msg, index) => {
             if(msg.sender==='user'){
                  return (
@@ -331,11 +357,11 @@ const Chatbot = ({isDarkMode}) => {
                     <div key={index} className="chatCont" style={{ textAlign: msg.sender === 'user' ? 'right' : 'left' }} >
                         {/*<p className={`${isDarkMode ? 'senderDark' : 'senderlight'} ${msg.sender==='user'?"senderClass":"botclass"}`} >{msg.text}</p>*/}
                         {/*   <span className={`${isDarkMode ? 'senderDark' : 'senderlight'} ${msg.sender==='user'?"senderClass":"botclass"}`} >{msg.text}</span>*/}
-                        <Message istyping={isTyping} key={index} sender={msg.sender} text={msg.text} />
+                        <Message scrollToBottom={scrollToBottom} key={index} sender={msg.sender} text={msg.text} lastmsgID={lastmsgid}  idd={msg.id} messagesList={messages}/>
                         <button  className="regenratebutton">
                           <IoReloadCircleOutline
                           className="regenerate-icon"
-                          onClick={() => handleRegenerate(msg.text)}
+                          onClick = {() => handleRegenerate(msg.text)}
                         />
                         </button>
                         
@@ -345,7 +371,12 @@ const Chatbot = ({isDarkMode}) => {
                 )
             }
        })}
-              {isTyping && <div style={{color:"red"}} className="  message bot typing">legAI is typing...</div>}
+          {isTyping && (
+            <div className="loadingmsgContainer">
+              <ReactLoading type="bubbles" color="black" height={30} width={30} />
+            </div>
+          )}
+      <div ref={messagesEndRef} />
       </div>
       <div className="promptBtnContainer">
         <button onClick={popupbtnClicked} className="prompsBtn">
@@ -525,12 +556,12 @@ const Chatbot = ({isDarkMode}) => {
             />
         <button className="sendMsgbtn" >
               <FontAwesomeIcon icon={faPaperPlane} />
-
         </button>
         </form>
           
       </div>
       
+    </div>
     </div>
   );
 };

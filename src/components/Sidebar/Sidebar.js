@@ -3,7 +3,12 @@ import './Sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faPencil} from '@fortawesome/free-solid-svg-icons'
 
-function Sidebar({ isDarkMode }) {
+function Sidebar({clickprevious, isDarkMode, recentQueries }) {
+  const clicktheHistory = (message)=>{
+      clickprevious(message)
+      console.log('thismsg',message)
+  }
+
   return (
     <div className={`sidebar ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <h1 className='LegAiLOGOName'>LegAi</h1>
@@ -20,7 +25,17 @@ function Sidebar({ isDarkMode }) {
       </div>
       <div className="history">
         <h3 className='h3tag'>History</h3>
-            <p>No history yet</p>
+          <div className="recent-queries messageuserhistory">
+            {recentQueries.length === 0 ? (
+              <p>No History available.</p>
+            ) : (
+              recentQueries.map((message, index) => (
+                <div onClick={()=>clicktheHistory(message)} key={index} className="historyItem">
+                  {message.text}
+                </div>
+              ))
+            )}
+          </div>
       </div>
     </div>
   

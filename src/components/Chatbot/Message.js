@@ -10,23 +10,27 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-const Message = ({ sender, text }) => {
+const Message = ({ scrollToBottom,sender, text,lastmsgID,idd }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [copyStatus, setCopyStatus] = useState(false);
   const utteranceRef = useRef(new SpeechSynthesisUtterance());
+  console.log(idd===lastmsgID)
 
   useEffect(() => {
-    if (sender === 'bot') {
+    if (sender === 'bot' && idd===lastmsgID) {
       let index = 0;
       const timer = setInterval(() => {
         if (index <= text.length) {
           setDisplayedText(text.slice(0, index));
           index++;
+          scrollToBottom(); 
         } else {
-          clearInterval(timer);
+          clearInterval(timer); 
+          scrollToBottom();
         }
-      }, 16);
+      }, 5);
 
       return () => clearInterval(timer);
     } else {
@@ -67,7 +71,8 @@ const Message = ({ sender, text }) => {
 
     try {
       document.execCommand('copy');
-      alert('Copied to clipboard');
+      setCopyStatus(true);
+      setTimeout(() => setCopyStatus(false), 2000);
     } catch (err) {
       console.error('Failed to copy text to clipboard:', err);
     }
@@ -146,6 +151,7 @@ const Message = ({ sender, text }) => {
                 {isPaused || !isSpeaking ? <FaPlay /> : <FaPause />}
               </button>
             </div>
+            {copyStatus && <span className="copy-status">Copied!</span>}
           </>
         ) : (
           displayedText
