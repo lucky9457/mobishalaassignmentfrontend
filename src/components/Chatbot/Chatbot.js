@@ -165,7 +165,7 @@ const Chatbot = ({isDarkMode}) => {
   const [isTyping, setIsTyping] = useState(false);
   const [botMessage, setBotMessage] = useState(null);
   const [recentQueries, setRecentQueries] = useState([]);
-
+  const [typingstatus,setTypingStatus] = useState(false)
   
 
 
@@ -354,19 +354,19 @@ const Chatbot = ({isDarkMode}) => {
             else{
                 return (
 
-                    <div key={index} className="chatCont" style={{ textAlign: msg.sender === 'user' ? 'right' : 'left' }} >
+                    <div  key={index} className="chatCont" style={{ textAlign: msg.sender === 'user' ? 'right' : 'left' }} >
                         {/*<p className={`${isDarkMode ? 'senderDark' : 'senderlight'} ${msg.sender==='user'?"senderClass":"botclass"}`} >{msg.text}</p>*/}
                         {/*   <span className={`${isDarkMode ? 'senderDark' : 'senderlight'} ${msg.sender==='user'?"senderClass":"botclass"}`} >{msg.text}</span>*/}
-                        <Message scrollToBottom={scrollToBottom} key={index} sender={msg.sender} text={msg.text} lastmsgID={lastmsgid}  idd={msg.id} messagesList={messages}/>
-                        <button  className="regenratebutton">
+                        <Message  setTypingStatuss={setTypingStatus} typingstatuss={typingstatus} scrollToBottom={scrollToBottom} key={index} sender={msg.sender} text={msg.text} lastmsgID={lastmsgid}  idd={msg.id} messagesList={messages}/>
+                        {typingstatus && <button  className="regenratebutton">
                           <IoReloadCircleOutline
                           className="regenerate-icon"
                           onClick = {() => handleRegenerate(msg.text)}
                         />
-                        </button>
+                        </button>}
                         
                         
-                    </div>
+                    </div >
                     
                 )
             }
@@ -376,7 +376,7 @@ const Chatbot = ({isDarkMode}) => {
               <ReactLoading type="bubbles" color="black" height={30} width={30} />
             </div>
           )}
-      <div ref={messagesEndRef} />
+       <div ref={messagesEndRef} />
       </div>
       <div className="promptBtnContainer">
         <button onClick={popupbtnClicked} className="prompsBtn">

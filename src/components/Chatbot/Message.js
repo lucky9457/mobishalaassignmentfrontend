@@ -10,12 +10,13 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-const Message = ({ scrollToBottom,sender, text,lastmsgID,idd }) => {
+const Message = ({setTypingStatuss,typingstatuss, scrollToBottom,sender, text,lastmsgID,idd }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [copyStatus, setCopyStatus] = useState(false);
   const utteranceRef = useRef(new SpeechSynthesisUtterance());
+
   console.log(idd===lastmsgID)
 
   useEffect(() => {
@@ -24,10 +25,13 @@ const Message = ({ scrollToBottom,sender, text,lastmsgID,idd }) => {
       const timer = setInterval(() => {
         if (index <= text.length) {
           setDisplayedText(text.slice(0, index));
-          index++;
-          scrollToBottom(); 
+         
+          setTypingStatuss(false)
+          scrollToBottom();
+           index++; 
         } else {
           clearInterval(timer); 
+          setTypingStatuss(true)
           scrollToBottom();
         }
       }, 5);
@@ -140,17 +144,28 @@ const Message = ({ scrollToBottom,sender, text,lastmsgID,idd }) => {
           <>
           
             <span className='spanmesage' dangerouslySetInnerHTML={{ __html: renderFormattedText(displayedText) }} />
-            <div className="message-actions">
+            {typingstatuss && idd===lastmsgID ? (<div  className="message-actions">
               <button className="copy-button" onClick={copyToClipboard}>
                 <IoCopyOutline />
               </button>
               <button className="share-button" onClick={shareToPDF}>
-                <IoShareOutline />
+                <IoShareOutline /> 
               </button>
               <button className="audio-button" onClick={handleAudioToggle}>
                 {isPaused || !isSpeaking ? <FaPlay /> : <FaPause />}
               </button>
-            </div>
+            </div>):""}
+            {idd!==lastmsgID && (<div  className="message-actions">
+              <button className="copy-button" onClick={copyToClipboard}>
+                <IoCopyOutline />
+              </button>
+              <button className="share-button" onClick={shareToPDF}>
+                <IoShareOutline /> 
+              </button>
+              <button className="audio-button" onClick={handleAudioToggle}>
+                {isPaused || !isSpeaking ? <FaPlay /> : <FaPause />}
+              </button>
+            </div>) }
             {copyStatus && <span className="copy-status">Copied!</span>}
           </>
         ) : (
