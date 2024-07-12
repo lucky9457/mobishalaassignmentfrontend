@@ -337,9 +337,14 @@ const Chatbot = ({isDarkMode}) => {
     console.log(each.text)
   })
 
+  const handleNewChat = () => {
+    setMessages([]);
+    localStorage.removeItem('chatMessages');
+  };
+
   return (
     <div className="mainnn"> 
-    <Sidebar clickprevious={clickpreviousmsg} recentQueries={recentQueries}  isDarkMode={isDarkMode} /> 
+    <Sidebar handleNewChat={handleNewChat} clickprevious={clickpreviousmsg} recentQueries={recentQueries}  isDarkMode={isDarkMode} /> 
     <div className={`chat-area ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <div className="chatbox" >
         <h3>Chats</h3>
@@ -359,7 +364,7 @@ const Chatbot = ({isDarkMode}) => {
                         {/*   <span className={`${isDarkMode ? 'senderDark' : 'senderlight'} ${msg.sender==='user'?"senderClass":"botclass"}`} >{msg.text}</span>*/}
                         <Message  setTypingStatuss={setTypingStatus} typingstatuss={typingstatus} scrollToBottom={scrollToBottom} key={index} sender={msg.sender} text={msg.text} lastmsgID={lastmsgid}  idd={msg.id} messagesList={messages}/>
                         {typingstatus && <button  className="regenratebutton">
-                          <IoReloadCircleOutline
+                          <IoReloadCircleOutline 
                           className="regenerate-icon"
                           onClick = {() => handleRegenerate(msg.text)}
                         />

@@ -38,6 +38,13 @@
 }
 
 .litag:hover {
+  color: #007bff;
+  width: 90%;
+
+ 
+}
+
+.activeTag{
   background-color: #574d4d;
   width: 90%;
   color: #f3f3f3;
@@ -90,4 +97,12 @@
 
 .dark-mode .logoimage{
   color: white;
+}
+
+/* Add your existing styles */
+
+/* Example active class style */
+.litag.active {
+  background-color: ; /* Change to your desired active color */
+  color: #007bff;
 }

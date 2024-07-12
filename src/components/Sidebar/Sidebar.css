@@ -111,3 +111,30 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+.new-chat {
+  /* existing styles */
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes newChatAnimation {
+  0% {
+    background-color: #f0f0f0;
+    transform: scale(1);
+  }
+  50% {
+    background-color: #ffeb3b;
+    transform: scale(1.1);
+  }
+  100% {
+    background-color: #ffffff;
+    transform: scale(1);
+  }
+}
+.new-chat .pencilIcon {
+  margin-left: 8px;
+}
+
+.animate {
+  animation: newChatAnimation 0.5s ease-in-out;
+}
