@@ -35,7 +35,7 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
           </Link>
 
           <Link className='linkele' to="/Assistant">
-              <li className={`litag ${location.pathname === '/dataset' ? 'active' : ''}`}>
+              <li className={`litag ${location.pathname ==="/Assistant"? 'active' : ''}`}>
                   <FontAwesomeIcon icon={faHeadset} />
               </li>
           </Link>
