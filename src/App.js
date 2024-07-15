@@ -5,6 +5,7 @@ import Search from './components/Search/Search';
 import { ThemeProvider } from "./components/ThemeContext"
 import StorageComponent from './components/StorageComponent/StorageComponent';
 import Profiles from './components/Profiles/Profiles';
+import VoiceAIComponent from './components/VoiceAIComponent/VoiceAiComponent';
 import './Home.css';
 
 
@@ -18,6 +19,7 @@ const App = () => {
     <Routes>
       <Route exact path="/" Component={Home}/>
       <Route exact path='/dataset' Component={StorageComponent}/>
+      <Route exact path="/Assistant" Component={VoiceAIComponent}/>
       
       <Route exact path="/search" Component={Search}/>
       <Route exact path="/profiles" Component={Profiles}/>

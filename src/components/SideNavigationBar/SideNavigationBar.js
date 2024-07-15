@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon, faMagnifyingGlass, faUser, faCloud, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faHeadset,faMoon, faMagnifyingGlass, faUser, faCloud, faComment } from '@fortawesome/free-solid-svg-icons';
 import './SideNavigationBar.css';
 
 function SideNavigationBar({ toggleTheme, isDarkMode }) {
@@ -32,6 +32,12 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
             <li className={`litag ${location.pathname === '/dataset' ? 'active' : ''}`}>
               <FontAwesomeIcon icon={faCloud} />
             </li>
+          </Link>
+
+          <Link className='linkele' to="/Assistant">
+              <li className={`litag ${location.pathname === '/dataset' ? 'active' : ''}`}>
+                  <FontAwesomeIcon icon={faHeadset} />
+              </li>
           </Link>
           
           <Link className='linkele' to="/search">

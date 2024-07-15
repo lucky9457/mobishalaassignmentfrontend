@@ -1,4 +1,7 @@
-
+.mainDatasetContainer{
+  display: flex;
+  height: 100vh;
+}
 
 .storage-main-content {
 
@@ -7,6 +10,9 @@
     background-color: #f0f0f0;
     height: 97%;
     transition: ease 0.5s;
+    width: 75%;
+    
+    
     
   }
 
@@ -19,6 +25,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    flex-direction: column;
   }
   
   .get-more-storage {
@@ -42,6 +49,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: scroll;
     max-height: 60%;
+    width: 100%;
     transition: ease 1s;
   }
 
@@ -403,7 +411,7 @@
 }
 
 .spinner{
-  width: 80vw;
+
   display: flex;
   justify-content: center;
   align-items: center;

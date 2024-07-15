@@ -8,6 +8,7 @@ import "./StorageMainContent.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
+import SidebarDataset from "../SidebarDataset/sidebardataset";
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 /*
 // Set the workerSrc for PDF.js
@@ -260,151 +261,155 @@ const renderFilePreview = (file) => {
   };*/
 
   return (
-    <div className={`storage-main-content ${isDarkMode ? "dark-mode" : "light-mode"}`}>
-      
-      <div className="header">
-        <div className="uploadButtonCont">
-          <h3 className="storagenamehead">Dataset</h3>
-          <Popup className="popupclass" trigger={<button id="uploadbtn" className="storagebtn">Upload</button>} modal>
-            {close => (
-              <div className="modal">
-                <button className="close" onClick={close}>
-                  &times;
-                </button>
-                <div className="header">Upload File</div>
-                <div className="content">
-                  <form className="formStyle" onSubmit={submitFile}>
-                    <input onChange={(e)=>setCategory(e.target.value)} id="categoryinput" type="text" className="fileinput form-control" placeholder="Category" required/>
-                    <input
-                      id="titleinput"
-                      type="text"
-                      className="form-control fileinput"
-                      placeholder="Title"
-                      required
-                      onChange={(e) => setTitle(e.target.value)}
-                    />
-                    <br />
-                    <input
-                      id="fileinputEle"
-                      type="file"
-                      className="form-control fileinput"
-                      accept="*/*"
-                      required
-                      onChange={(e) => setFile(e.target.files[0])}
-                    />
-                    <br />
-                    <button className="btnCLassSubmitupload" type="submit">
-                    {uploadingFile? <ClipLoader size={16} color="#ffffff" /> : 'Submit'}
-                    </button>
-                  </form>
-                </div>
-              </div>
-            )}
-          </Popup>
-        </div>
-      </div>
+    <div className="mainDatasetContainer">
 
-      <div className="searchrow">
-        <div className="searchCon">
-          <FontAwesomeIcon  className="searchicon" icon={faMagnifyingGlass} />
-          <input className="searchEle" 
-          type="search"
-          id="searchElement"
-          onKeyPress={(e) => handleKeyPress(e)}
-            placeholder="Search files..."
-            value={searchTerm}
-            onChange={onchangeSearch}/>
-        </div>
-      </div>
-
-      <div className="table-container">
-        <table className="user-table">
-          <thead>
-            <tr>
-              <th>Type</th>
-              <th>Category</th>
-              <th>Name</th>
-              <th>Uploaded Date</th>
-              <th>Filesize</th>
-              <th>View</th>
-              <th>Embedding</th>
-              <th>Delete</th>  
-            </tr>
-          </thead>
-          <tbody>
+        <SidebarDataset/>
+        <div className={`storage-main-content ${isDarkMode ? "dark-mode" : "light-mode"}`}>
           
-            {allFiles == null ? (
-              <tr className="trnofiles">
-                <td colSpan="8" className="empty-message">You don't have any files yet :(</td>
-              </tr>
-            ) : (
-              allFiles.map((data) => {
-                return (
-                  <tr key={data._id}>
-                    
-                    <td>{data.filetype}</td>
-                    <td>{data.Category}</td>
-                    <td>{data.title}</td>
-                    
-                    <td>{data.uploadDate}</td>
-                    <td>{data.filesize} bytes</td>
-                    <td>
-                      <button className="showAndDeleteBtn"  onClick={() => openFileViewer(data)}>
-                        Show File
-                      </button>
-                    </td>
-                    <td>
-                      {data.status==="True"?(
-                        <button className="showAndDeleteBtn EmbededButton" onClick={()=>EmbededFunctioncall(data)}>Embedded</button>
-                      ):
-                      <button key={data._id} className= "showAndDeleteBtn" onClick={() => EmbedCalled(data)}>
-                          {embeddingLoading[data._id] ? <ClipLoader size={16} color="#ffffff" /> : 'Embed'}
-                        </button>}
-                       
-                    </td>
-                    <td>
-                      <button className="showAndDeleteBtn" onClick={() => deleteFile(data._id)}>
-                      {deletingFile[data._id] ? <ClipLoader size={16} color="#ffffff" /> : 'Delete'}
-                        
-                      </button>
-                    </td>
-
-                  </tr>
-                );
-              })
-            )}
-          </tbody>
-        </table>
-      </div>
-      {/* File Viewer Popup */}
-      {selectedFile && (
-        <Popup open={true} closeOnDocumentClick onClose={closeFileViewer}>
-          {close => (
-            <div className="modal modal-viewFileCont">
-              <button className="close" onClick={close}>
-              &times;
-              </button>
-
-            
-              <div className="file-viewer">
-                <h2>{selectedFile.title}</h2>
-                {renderFilePreview(selectedFile)}
-              </div>
+          <div className="header">
+            <div className="uploadButtonCont">
+              <h3 className="storagenamehead">Dataset</h3>
+              <Popup className="popupclass" trigger={<button id="uploadbtn" className="storagebtn">Upload</button>} modal>
+                {close => (
+                  <div className="modal">
+                    <button className="close" onClick={close}>
+                      &times;
+                    </button>
+                    <div className="header">Upload File</div>
+                    <div className="content">
+                      <form className="formStyle" onSubmit={submitFile}>
+                        <input onChange={(e)=>setCategory(e.target.value)} id="categoryinput" type="text" className="fileinput form-control" placeholder="Category" required/>
+                        <input
+                          id="titleinput"
+                          type="text"
+                          className="form-control fileinput"
+                          placeholder="Title"
+                          required
+                          onChange={(e) => setTitle(e.target.value)}
+                        />
+                        <br />
+                        <input
+                          id="fileinputEle"
+                          type="file"
+                          className="form-control fileinput"
+                          accept="*/*"
+                          required
+                          onChange={(e) => setFile(e.target.files[0])}
+                        />
+                        <br />
+                        <button className="btnCLassSubmitupload" type="submit">
+                        {uploadingFile? <ClipLoader size={16} color="#ffffff" /> : 'Submit'}
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                )}
+              </Popup>
             </div>
-            )}
-        </Popup>
-      )}
+          </div>
 
-      {/* Loading indicators */}
-      {(loadingFiles) && (
-        <div className="loading-overlay">
-          <div className="spinner"></div>
-          {/* Optional: Loading message */}
-          <p>Loading...</p>
+          <div className="searchrow">
+            <div className="searchCon">
+              <FontAwesomeIcon  className="searchicon" icon={faMagnifyingGlass} />
+              <input className="searchEle" 
+              type="search"
+              id="searchElement"
+              onKeyPress={(e) => handleKeyPress(e)}
+                placeholder="Search files..."
+                value={searchTerm}
+                onChange={onchangeSearch}/>
+            </div>
+          </div>
+
+          <div className="table-container">
+            <table className="user-table">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Category</th>
+                  <th>Name</th>
+                  <th>Uploaded Date</th>
+                  <th>Filesize</th>
+                  <th>View</th>
+                  <th>Embedding</th>
+                  <th>Delete</th>  
+                </tr>
+              </thead>
+              <tbody>
+              
+                {allFiles == null ? (
+                  <tr className="trnofiles">
+                    <td colSpan="8" className="empty-message">You don't have any files yet :(</td>
+                  </tr>
+                ) : (
+                  allFiles.map((data) => {
+                    return (
+                      <tr key={data._id}>
+                        
+                        <td>{data.filetype}</td>
+                        <td>{data.Category}</td>
+                        <td>{data.title}</td>
+                        
+                        <td>{data.uploadDate}</td>
+                        <td>{data.filesize} bytes</td>
+                        <td>
+                          <button className="showAndDeleteBtn"  onClick={() => openFileViewer(data)}>
+                            Show File
+                          </button>
+                        </td>
+                        <td>
+                          {data.status==="True"?(
+                            <button className="showAndDeleteBtn EmbededButton" onClick={()=>EmbededFunctioncall(data)}>Embedded</button>
+                          ):
+                          <button key={data._id} className= "showAndDeleteBtn" onClick={() => EmbedCalled(data)}>
+                              {embeddingLoading[data._id] ? <ClipLoader size={16} color="#ffffff" /> : 'Embed'}
+                            </button>}
+                          
+                        </td>
+                        <td>
+                          <button className="showAndDeleteBtn" onClick={() => deleteFile(data._id)}>
+                          {deletingFile[data._id] ? <ClipLoader size={16} color="#ffffff" /> : 'Delete'}
+                            
+                          </button>
+                        </td>
+
+                      </tr>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
+          </div>
+          {/* File Viewer Popup */}
+          {selectedFile && (
+            <Popup open={true} closeOnDocumentClick onClose={closeFileViewer}>
+              {close => (
+                <div className="modal modal-viewFileCont">
+                  <button className="close" onClick={close}>
+                  &times;
+                  </button>
+
+                
+                  <div className="file-viewer">
+                    <h2>{selectedFile.title}</h2>
+                    {renderFilePreview(selectedFile)}
+                  </div>
+                </div>
+                )}
+            </Popup>
+          )}
+
+          {/* Loading indicators */}
+          {(loadingFiles) && (
+            <div className="loading-overlay">
+              <div className="spinner"></div>
+              {/* Optional: Loading message */}
+              <p>Loading...</p>
+            </div>
+          )}
+
+          
         </div>
-      )}
-
-      
     </div>
   );
 }
