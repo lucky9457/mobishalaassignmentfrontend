@@ -86,7 +86,7 @@
     color:#fff;
     display:flex;
     flex-direction: column;
-    
+    width: 70%;
     align-items: center;
     max-height: 500px;
    
@@ -258,6 +258,7 @@
     background-color:transparent;
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
     align-items: center;
     animation:pluse  1.5s infinite; /* Blinking effect */
   }
