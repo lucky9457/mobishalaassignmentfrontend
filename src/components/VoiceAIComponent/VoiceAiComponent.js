@@ -324,6 +324,7 @@ const VoiceAIComponent = () => {
       try {
         const response = await axios.get(`/api/v1/agents/${agentId}`, options);
         setProfileDetails(response.data);
+        console.log(profileDetails)
       } catch (error) {
         console.error('Axios error:', error);
         setError('Failed to fetch profile details.');
@@ -500,6 +501,7 @@ const VoiceAIComponent = () => {
                   <FontAwesomeIcon icon={faMicrophone} />
                 </button>
                 <div className={`connection-status ${connectionStatus}`}>
+                  <br/>
                   {connectionStatus === 'disconnected' && 'Click to connect'}
                   {connectionStatus === 'connecting' && 'Connecting...'}
                   {connectionStatus === 'connected' && 'Connected'}
