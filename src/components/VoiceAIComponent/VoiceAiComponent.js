@@ -518,15 +518,15 @@ const VoiceAIComponent = () => {
                   <div className="voice-ai-popup-content">
                     <div className="voice-ai-popup-header">
                       <div>
-                        <p className="voice-ai-profile-name">{profileDetails.displayName}</p>
+                        <p className="voice-ai-profile-name">{/*profileDetails.displayName*/}Leg Ai</p>
                         <p className="voice-ai-profile-greeting">
-                          Hello, I am the AI Assistant of {profileDetails.displayName}
+                          Hello, I am the AI Assistant of {/*profileDetails.displayName*/}Leg Ai
                         </p>
                       </div>
                       <div className="circle-animation">
                         <img
                           className={`voice-ai-profile-image ${isPlaying ? 'blink-animation' : ''}`}
-                          src={profileDetails.avatarPhotoUrl}
+                          src="https://res.cloudinary.com/dcwxu3d5g/image/upload/v1721230445/Task%20internship/download12345_akcopb.jpg"
                           alt="Profile"
                         />
                       </div>
