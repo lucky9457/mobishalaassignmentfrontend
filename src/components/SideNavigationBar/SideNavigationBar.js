@@ -22,8 +22,14 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
         )}
         
         <ul className='tabiconsContainer'>
-          <Link className='linkele' to="/">
-            <li className={`litag ${location.pathname === '/' ? 'active' : ''}`}>
+        <Link className='linkele' to="/">
+              <li className={`litag ${location.pathname ==="/"? 'active' : ''}`}>
+                  <FontAwesomeIcon icon={faHeadset} />
+              </li>
+          </Link>
+
+          <Link className='linkele' to="/chat">
+            <li className={`litag ${location.pathname === '/chat' ? 'active' : ''}`}>
               <FontAwesomeIcon icon={faComment} />
             </li>
           </Link>
@@ -34,11 +40,7 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
             </li>
           </Link>
 
-          <Link className='linkele' to="/Assistant">
-              <li className={`litag ${location.pathname ==="/Assistant"? 'active' : ''}`}>
-                  <FontAwesomeIcon icon={faHeadset} />
-              </li>
-          </Link>
+         
           
           <Link className='linkele' to="/search">
             <li className={`litag ${location.pathname === '/search' ? 'active' : ''}`}>

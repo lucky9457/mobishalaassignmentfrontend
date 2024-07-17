@@ -501,15 +501,17 @@ const VoiceAIComponent = () => {
                   onClick={isRecording ? handleStopRecording : handleStartRecording}
                   disabled={connectionStatus === 'connecting'}
                 >
-                  <FontAwesomeIcon icon={faMicrophone} />
+                  {/*<FontAwesomeIcon icon={faMicrophone} />*/}
+
+                  <img src='https://res.cloudinary.com/dcwxu3d5g/image/upload/v1721233451/Task%20internship/bot_icon_1_-removebg-preview_tri3da.png' alt="roboAi" className='roboaiicon'/>
                 </button>
                 <div className={`connection-status ${connectionStatus}`}>
                   <br/>
                   {connectionStatus === 'disconnected' && 'Click to connect'}
                   {connectionStatus === 'connecting' && 'Connecting...'}
-                  {connectionStatus === 'connected' && 'Connected'}
+                  
                   <br/>
-                  {connectionStatus==="connected" && " click again on mic to talk"}
+                  {connectionStatus==="connected" && " click to talk"}
                  
                 </div>
               </div>}

@@ -17,9 +17,9 @@ const App = () => {
   <BrowserRouter>
   <ThemeProvider>
     <Routes>
-      <Route exact path="/" Component={Home}/>
+      <Route exact path="/chat" Component={Home}/>
       <Route exact path='/dataset' Component={StorageComponent}/>
-      <Route exact path="/Assistant" Component={VoiceAIComponent}/>
+      <Route exact path="/" Component={VoiceAIComponent}/>
       
       <Route exact path="/search" Component={Search}/>
       <Route exact path="/profiles" Component={Profiles}/>
