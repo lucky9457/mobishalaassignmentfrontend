@@ -335,6 +335,7 @@ const VoiceAIComponent = () => {
 
     fetchData();
   }, []);
+  console.log(profileDetails)
 
   const handleAudioStream = useCallback(async () => {
     const base64Data = accumulatedAudioData.current;
