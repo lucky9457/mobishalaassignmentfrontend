@@ -48,13 +48,7 @@
     margin-left: 10px;
   }
   
-  .pinned-chats, .history {
-    margin-top: 20px;
-  }
-  
-  .pinned-chats .h3tag, .history .h3tag {
-    margin-bottom: 10px;
-  }
+
   .sidebar {
     padding: 20px;
   }
@@ -69,81 +63,16 @@
     color: #ffffff;
   }
   
- .new-chat{
-    background-color: #ffcc00;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 15px;
- }
- .linehor{
-   width: 100%;
-   
- }
- .messageuserhistory{
-  font-family: Roboto;
-  font-size: 15px;
-  height: 150px;
-  border: solid 0.5px grey;
-  padding: 10px;
-  overflow-y: scroll;
-  border-radius: 5px;
- }
- .historyItem{
- 
-  padding: 10px;
-  transition: linear 0.5s;
-  border-radius: 5px;
- }
- .historyItem:hover{
-  color: #fdfdfd;
-  background-color: #000000;
- }
- /* Hide scrollbar for Chrome, Safari, and Opera */
-.messageuserhistory::-webkit-scrollbar {
-  display: none;
-}
-/* Hide scrollbar for IE, Edge, and Firefox */
-.messageuserhistory {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-.new-chat {
-  /* existing styles */
-  position: relative;
-  overflow: hidden;
+
+
+
+
+
+.modalContainer2{
+  height: 600px;
 }
 
-@keyframes newChatAnimation {
-  0% {
-    background-color: #f0f0f0;
-    transform: scale(1);
-  }
-  50% {
-    background-color: #ffeb3b;
-    transform: scale(1.1);
-  }
-  100% {
-    background-color: #ffffff;
-    transform: scale(1);
-  }
-}
-.new-chat .pencilIcon {
-  margin-left: 8px;
-}
-
-.animate {
-  animation: newChatAnimation 0.5s ease-in-out;
-}
-
-.modalContainer{
-  height: 150px;
-}
-
-.modal {
+.modal2 {
   font-size: 14px;
   
 }
@@ -272,4 +201,8 @@
 .knowledgeSidebar{
   font-size: 25px;
   font-family: Roboto;
+}
+
+.modal2{
+    height: 500px;
 }

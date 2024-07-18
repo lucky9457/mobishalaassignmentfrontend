@@ -1,0 +1,137 @@
+
+  .ContainerClientDataset{
+    height: 100vh;
+
+  }
+
+.storageMainContainer{
+    display: flex;
+  
+  
+    
+}
+
+.Storage-containerDatset{
+    display:flex ;
+   
+    justify-content: flex-start;
+    align-items: stretch;
+ 
+    
+}
+
+.containerClient {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+   
+    
+}
+
+.headerClientset{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+ 
+    
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.info p {
+    margin: 5px 0;
+}
+
+.assistant {
+    text-align: center;
+}
+
+.assistant .icon {
+    font-size: 40px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    background-color: #555;
+    padding: 10px 0;
+}
+
+.nav-item {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.content {
+    background-color: #222;
+    padding: 20px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.tool {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.editor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.publish {
+    background-color: #00b894;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.delete {
+    background-color: #252525;
+    color: #fff;
+    font-size: 5px;
+    cursor: pointer;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    
+}
+.publishDeleteContainer{
+    display: flex;
+    align-items: center;
+}
+.icondelete{
+    font-size: 15px;
+}
+
+.editor p {
+    margin-left: 20px;
+}
+.nav-item{
+    list-style-type: none;
+}

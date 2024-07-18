@@ -268,7 +268,7 @@ const renderFilePreview = (file) => {
           
           <div className="header">
             <div className="uploadButtonCont">
-              <h3 className="storagenamehead">Dataset</h3>
+              <h3 className="storagenamehead">Knowledge Base</h3>
               <Popup className="popupclass" trigger={<button id="uploadbtn" className="storagebtn">Upload</button>} modal>
                 {close => (
                   <div className="modal">

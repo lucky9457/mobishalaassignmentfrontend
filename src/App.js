@@ -7,7 +7,7 @@ import StorageComponent from './components/StorageComponent/StorageComponent';
 import Profiles from './components/Profiles/Profiles';
 import VoiceAIComponent from './components/VoiceAIComponent/VoiceAiComponent';
 import './Home.css';
-
+import ClientDataset from './components/ClientDataset/ClientDataset';
 
 const App = () => {
   useEffect(() => {
@@ -20,6 +20,7 @@ const App = () => {
       <Route exact path="/chat" Component={Home}/>
       <Route exact path='/dataset' Component={StorageComponent}/>
       <Route exact path="/" Component={VoiceAIComponent}/>
+      <Route exact path ="/clientDataset" Component={ClientDataset}/>
       
       <Route exact path="/search" Component={Search}/>
       <Route exact path="/profiles" Component={Profiles}/>

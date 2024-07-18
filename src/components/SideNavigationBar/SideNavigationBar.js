@@ -24,7 +24,8 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
         <ul className='tabiconsContainer'>
         <Link className='linkele' to="/">
               <li className={`litag ${location.pathname ==="/"? 'active' : ''}`}>
-                  <FontAwesomeIcon icon={faHeadset} />
+                  {/*<FontAwesomeIcon icon={faHeadset} />*/}
+                  <img src='https://res.cloudinary.com/dcwxu3d5g/image/upload/v1721306399/Task%20internship/bot_icon_tfcqux.png' alt="roboAiNav" className='roboaiiconNav'/>
               </li>
           </Link>
 
@@ -37,6 +38,12 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
           <Link className='linkele' to="/dataset">
             <li className={`litag ${location.pathname === '/dataset' ? 'active' : ''}`}>
               <FontAwesomeIcon icon={faCloud} />
+            </li>
+          </Link>
+
+          <Link className='linkele' to="/clientDataset">
+            <li className={`litag ${location.pathname === '/clientDataset' ? 'active' : ''}`}>
+              <FontAwesomeIcon icon={faComment} />
             </li>
           </Link>
 

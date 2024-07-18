@@ -347,7 +347,7 @@ const Chatbot = ({isDarkMode}) => {
     <Sidebar handleNewChat={handleNewChat} clickprevious={clickpreviousmsg} recentQueries={recentQueries}  isDarkMode={isDarkMode} /> 
     <div className={`chat-area ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <div className="chatbox" >
-        <h3>Chats</h3>
+        <h3 className="chathead">Chats</h3>
         {messages.map((msg, index) => {
             if(msg.sender==='user'){
                  return (

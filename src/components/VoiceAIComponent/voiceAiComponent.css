@@ -18,9 +18,7 @@
     color: #fff;
   } 
 
-  .storageMainContainer{
-    background-color: #000;
-  }
+ 
    .dark-mode{
     background-color: #000;
   }
@@ -36,6 +34,7 @@
     align-items: center;
     max-width:600px;
     width:100%;
+   
 
     
   }
@@ -374,6 +373,13 @@
       transform: scale(1.1);
     }
   }
-.voice-ai-container{
-    background-color: black;
-  }
+.dark-mode1{
+  display: flex;
+  flex-direction: column;
+}
+.headTitle{
+  font-family: Roboto;
+  font-size: 20px;
+  margin-top: 2%;
+  margin-left: 30px;
+}
