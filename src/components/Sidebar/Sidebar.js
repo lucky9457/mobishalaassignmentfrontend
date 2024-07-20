@@ -18,8 +18,11 @@ function Sidebar({clickprevious,handleNewChat,isDarkMode, recentQueries }) {
   };
 
   let historyuser = localStorage.getItem("history")
-  historyuser = JSON.parse(historyuser).reverse()
-  console.log(historyuser,"a")
+  if(historyuser!=null){
+    historyuser = JSON.parse(historyuser).reverse()
+    console.log(historyuser,"a")
+  }
+  
   historyuser.map((each)=>{
     console.log(each[0])
   })
@@ -41,7 +44,7 @@ function Sidebar({clickprevious,handleNewChat,isDarkMode, recentQueries }) {
       <div className="history">
         <h3 className='h3tag'>History</h3>
           <div className="recent-queries messageuserhistory">
-            {historyuser.length === 0 ? (
+            {historyuser.length === 0 || historyuser == null ?  (
               <p>No History available.</p>
             ) : (
               historyuser.map((message, index) => (
