@@ -22,8 +22,11 @@ function Sidebar({clickprevious,handleNewChat,isDarkMode, recentQueries }) {
     historyuser = JSON.parse(historyuser).reverse()
     console.log(historyuser,"a")
   }
+  else{
+    historyuser=[]
+  }
   
-  
+
   return (
     <div className={`sidebar ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <h1 className='LegAiLOGOName'>LegAi</h1>
