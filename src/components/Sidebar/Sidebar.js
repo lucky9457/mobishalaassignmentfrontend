@@ -23,10 +23,7 @@ function Sidebar({clickprevious,handleNewChat,isDarkMode, recentQueries }) {
     console.log(historyuser,"a")
   }
   
-  historyuser.map((each)=>{
-    console.log(each[0])
-  })
-
+  
   return (
     <div className={`sidebar ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <h1 className='LegAiLOGOName'>LegAi</h1>
