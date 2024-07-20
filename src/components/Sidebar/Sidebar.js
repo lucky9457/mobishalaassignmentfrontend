@@ -1,7 +1,8 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import './Sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faPencil} from '@fortawesome/free-solid-svg-icons'
+import { json } from 'react-router-dom';
 
 function Sidebar({clickprevious,handleNewChat,isDarkMode, recentQueries }) {
   const [isAnimating, setIsAnimating] = useState(false);
@@ -15,6 +16,13 @@ function Sidebar({clickprevious,handleNewChat,isDarkMode, recentQueries }) {
     handleNewChat();
     setTimeout(() => setIsAnimating(false), 1000); // Reset animation state after 1 second
   };
+
+  let historyuser = localStorage.getItem("history")
+  historyuser = JSON.parse(historyuser).reverse()
+  console.log(historyuser,"a")
+  historyuser.map((each)=>{
+    console.log(each[0])
+  })
 
   return (
     <div className={`sidebar ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
@@ -33,12 +41,12 @@ function Sidebar({clickprevious,handleNewChat,isDarkMode, recentQueries }) {
       <div className="history">
         <h3 className='h3tag'>History</h3>
           <div className="recent-queries messageuserhistory">
-            {recentQueries.length === 0 ? (
+            {historyuser.length === 0 ? (
               <p>No History available.</p>
             ) : (
-              recentQueries.map((message, index) => (
+              historyuser.map((message, index) => (
                 <div onClick={()=>clicktheHistory(message)} key={index} className="historyItem">
-                  {message.text}
+                  {message[0].text}
                 </div>
               ))
             )}

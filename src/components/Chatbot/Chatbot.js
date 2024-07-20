@@ -166,11 +166,13 @@ const Chatbot = ({isDarkMode}) => {
   const [botMessage, setBotMessage] = useState(null);
   const [recentQueries, setRecentQueries] = useState([]);
   const [typingstatus,setTypingStatus] = useState(false)
+  const [history,sethistory] = useState([])
   
 
 
   useEffect(() => {
     // Load chat history from local storage
+    
       const savedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
       setMessages(savedMessages);
       console.log(Lists.legalConsumersList.content)
@@ -182,6 +184,11 @@ const Chatbot = ({isDarkMode}) => {
   
   useEffect(() => {
     // Save chat history to local storage whenever messages state changes
+    const a = localStorage.getItem("history")
+    if(a==null){
+      localStorage.setItem("history",history)
+    }
+
     localStorage.setItem('chatMessages', JSON.stringify(messages));
     scrollToBottom();
   }, [messages]);
@@ -329,8 +336,9 @@ const Chatbot = ({isDarkMode}) => {
   }
 
   const clickpreviousmsg=(message)=>{
-    document.getElementById('inputElement').value= message.text
+ 
     setInput(message.text)
+    setMessages(message)
   }
 
   Lists.legalConsumersList.content.map((each)=>{
@@ -338,8 +346,22 @@ const Chatbot = ({isDarkMode}) => {
   })
 
   const handleNewChat = () => {
+   if(messages.length!==0){
+    sethistory([...history, [...messages]]);
+    const newHistory = [...history, [...messages]];
+
+    // Ensure the history length does not exceed 10
+    if (newHistory.length > 10) {
+      newHistory = newHistory.slice(0,10);
+    }
+
+    sethistory(newHistory);
+    localStorage.setItem('history', JSON.stringify(history));
+    console.log(history) 
     setMessages([]);
     localStorage.removeItem('chatMessages');
+   }
+    
   };
 
   return (
