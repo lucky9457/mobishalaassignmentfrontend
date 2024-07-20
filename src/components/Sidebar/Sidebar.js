@@ -19,7 +19,7 @@ function Sidebar({clickprevious,handleNewChat,isDarkMode, recentQueries }) {
 
 
 
-  let historyuser = localStorage.getItem("history") || []
+  let historyuser = localStorage.getItem("history") 
   if(historyuser!=null){
     historyuser = JSON.parse(historyuser).reverse()
     console.log(historyuser,"a")
