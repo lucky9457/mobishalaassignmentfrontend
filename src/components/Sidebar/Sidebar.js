@@ -19,16 +19,23 @@ function Sidebar({clickprevious,handleNewChat,isDarkMode, recentQueries }) {
 
 
 
-  let historyuser = localStorage.getItem("history") 
-  if(historyuser!=null){
+  let historyuser = localStorage.getItem("history") || "[]"
+  try{
+    historyuser = JSON.parse(historyuser).reverse();
+  }catch(error){
+    console.log(error)
+    historyuser=[]
+  }
+  /*
+  if(historyuser!=null && historyuser!= "[]"){
     historyuser = JSON.parse(historyuser).reverse()
     console.log(historyuser,"a")
   }
   else{
     historyuser=[]
   }
+  */
   
-
   return (
     <div className={`sidebar ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <h1 className='LegAiLOGOName'>LegAi</h1>
