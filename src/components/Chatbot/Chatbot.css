@@ -264,16 +264,14 @@
   scrollbar-width: none; /* Firefox */
 }
 
+
+
 .promptPopupDescript{
   font-family: Roboto;
   font-size: 14px;
-  color: #ffffff;
+  
   padding-top: 0px;
   margin-bottom: 30px;
-}
-
-.dark-mode .promptPopupDescript{
-  color: white;
 }
 
 .modal-prompt > .header {
@@ -477,32 +475,20 @@
   font-family: Roboto;
   padding: 0px;
 }
-
-.dark-mode .modal-prompt{
-  background-color: #252525;
+.promptPopupDescript{
+  color: white;
 }
-
-.modal-prompt{
-  background-color:#252525;
-}
-
 .content{
-  background-color: #252525;
   border-radius: 10px;
-
+}
+.modal-prompt{
+  background-color: #252525;
 }
 
 .dark-mode .header{
-  color: white;
-}
-
-.light-mode .header{
-  color: black;
+  color: #ffffff;
 }
 
 .header{
-  color: white;
-}
-.inputPrompt{
-  color: #000000;
+  color: #ffffff;
 }

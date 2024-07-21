@@ -411,7 +411,7 @@ const Chatbot = ({isDarkMode}) => {
         <button onClick={popupbtnClicked} className="prompsBtn">
           Prompts
         </button>
-        <Popup open={modelopened} onClose={closePromptPopup}  className={`popupclass ${isDarkMode ? 'dark-mode' : 'light-mode'}`} modal>
+        <Popup open={modelopened} onClose={closePromptPopup} className="popupclass" modal>
             {close => (
               <div className="modal-prompt">
 
@@ -425,7 +425,7 @@ const Chatbot = ({isDarkMode}) => {
                 <div className="content">
                   <p className="promptPopupDescript">Choose the prompt that suits you best. Once you click, it'll appear in the text input field. You can then send it as is or add your own words.</p>
                   <div className="customPromptinputContainer">
-                    <input  placeholder="create a custom prompt" id="customPromptInputEle" className="inputPrompt" type="text" onChange={changesearchPrompt}/>
+                    <input placeholder="create a custom" id="customPromptInputEle" className="inputPrompt" type="text" onChange={changesearchPrompt}/>
                     <button onClick={addCustomList} className="buttonPlusIcon">
                       <FontAwesomeIcon icon={faPlus} />
                     </button>
