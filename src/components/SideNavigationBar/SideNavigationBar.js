@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faHeadset,faMoon, faMagnifyingGlass, faUser, faCloud, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faSun,faUsers, faHeadset,faMoon, faMagnifyingGlass, faUser, faCloud, faComment } from '@fortawesome/free-solid-svg-icons';
 import './SideNavigationBar.css';
 
 function SideNavigationBar({ toggleTheme, isDarkMode }) {
@@ -43,7 +43,7 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
 
           <Link className='linkele' to="/clientDataset">
             <li className={`litag ${location.pathname === '/clientDataset' ? 'active' : ''}`}>
-              <FontAwesomeIcon icon={faComment} />
+            <FontAwesomeIcon icon={faUsers} />
             </li>
           </Link>
 
