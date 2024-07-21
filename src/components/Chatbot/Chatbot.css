@@ -267,9 +267,13 @@
 .promptPopupDescript{
   font-family: Roboto;
   font-size: 14px;
-  
+  color: #ffffff;
   padding-top: 0px;
   margin-bottom: 30px;
+}
+
+.dark-mode .promptPopupDescript{
+  color: white;
 }
 
 .modal-prompt > .header {
@@ -472,4 +476,33 @@
   font-size: 25px;
   font-family: Roboto;
   padding: 0px;
+}
+
+.dark-mode .modal-prompt{
+  background-color: #252525;
+}
+
+.modal-prompt{
+  background-color:#252525;
+}
+
+.content{
+  background-color: #252525;
+  border-radius: 10px;
+
+}
+
+.dark-mode .header{
+  color: white;
+}
+
+.light-mode .header{
+  color: black;
+}
+
+.header{
+  color: white;
+}
+.inputPrompt{
+  color: #000000;
 }

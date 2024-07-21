@@ -188,6 +188,7 @@ const Chatbot = ({isDarkMode}) => {
     if(a==null){
       localStorage.setItem("history",history)
     }
+    
 
     localStorage.setItem('chatMessages', JSON.stringify(messages));
     scrollToBottom();
@@ -282,6 +283,7 @@ const Chatbot = ({isDarkMode}) => {
       const botMessageObj = {id:uuidv4(), sender: 'bot', text: botMessage };
       setlastmsgid(botMessageObj.id)
       setMessages((prevMessages) => [...prevMessages, botMessageObj]);
+     
       setBotMessage(null);
     }
   }, [botMessage]);
@@ -345,7 +347,7 @@ const Chatbot = ({isDarkMode}) => {
     console.log(each.text)
   })
 
-  const handleNewChat = () => {
+  const handleNewChat = async () => {
    if(messages.length!==0){
     sethistory([...history, [...messages]]);
     const newHistory = [...history, [...messages]];
@@ -409,7 +411,7 @@ const Chatbot = ({isDarkMode}) => {
         <button onClick={popupbtnClicked} className="prompsBtn">
           Prompts
         </button>
-        <Popup open={modelopened} onClose={closePromptPopup} className="popupclass" modal>
+        <Popup open={modelopened} onClose={closePromptPopup}  className={`popupclass ${isDarkMode ? 'dark-mode' : 'light-mode'}`} modal>
             {close => (
               <div className="modal-prompt">
 
@@ -423,7 +425,7 @@ const Chatbot = ({isDarkMode}) => {
                 <div className="content">
                   <p className="promptPopupDescript">Choose the prompt that suits you best. Once you click, it'll appear in the text input field. You can then send it as is or add your own words.</p>
                   <div className="customPromptinputContainer">
-                    <input id="customPromptInputEle" className="inputPrompt" type="text" onChange={changesearchPrompt}/>
+                    <input  placeholder="create a custom prompt" id="customPromptInputEle" className="inputPrompt" type="text" onChange={changesearchPrompt}/>
                     <button onClick={addCustomList} className="buttonPlusIcon">
                       <FontAwesomeIcon icon={faPlus} />
                     </button>
