@@ -13,7 +13,7 @@ function ClientSidebar({isDarkMode}) {
 
 
   return (
-    <div className={`sidebar ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+    <div id="sidebarClient" className={`sidebar ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <h1 className='LegAiLOGOName'>LegAi</h1>
       <button className="activate-pro">Legal Ai Assistant</button>
       <hr className='linehor'/>

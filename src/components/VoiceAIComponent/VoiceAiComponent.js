@@ -490,7 +490,7 @@ const VoiceAIComponent = () => {
     <>
       <div className='mainVoiceAssistant'>
         <SideNavigationBar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
-        <div className={`storageMainContainer ${isDarkMode ? 'dark-mode dark-mode1' : 'light-mode'}`}>
+        <div className={`storageMainContainer ${isDarkMode ? 'dark-mode dark-mode1' : 'light-mode dark-mode1'}`}>
           <h1 className='headTitle'>
             LegAi - Legal Ai Assistant
           </h1>

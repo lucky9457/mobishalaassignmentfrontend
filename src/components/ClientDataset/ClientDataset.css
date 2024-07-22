@@ -135,3 +135,90 @@
 .nav-item{
     list-style-type: none;
 }
+
+.clientdatasetContainer{
+    display: flex;
+    
+
+}
+.tablesRows{
+    position: relative;
+    width: 70%;
+    padding: 20px;
+}
+
+.buttonClient{
+    background-color: #ffd700;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+   
+    margin-left: 10px;
+}
+
+.clientFolderAdd{
+    display: flex;
+    justify-content: end;
+    height: 100px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+}
+
+.tablesRows{
+  
+}
+
+.clientHeader{
+    font-family: Roboto;
+    font-size: 30px;
+}
+
+.light-mode .clientdatasetContainer{
+    background-color: white;
+}
+.light-mode .tablesRows{
+    background-color: white ;
+}
+
+.light-mode .clientdatasetContainer{
+    background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

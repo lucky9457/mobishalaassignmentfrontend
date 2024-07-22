@@ -376,6 +376,12 @@
 .dark-mode1{
   display: flex;
   flex-direction: column;
+  
+}
+
+.light-mode .voice-ai-container{
+  background-color: #fff;
+  color: #000;
 }
 .headTitle{
   font-family: Roboto;

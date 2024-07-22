@@ -535,3 +535,9 @@
 #modalStorage{
   height: 300px;
 }
+.light-mode .storagenamehead{
+  color: #000;
+}
+.light-mode .storage-main-content{
+  background-color: white;
+}
