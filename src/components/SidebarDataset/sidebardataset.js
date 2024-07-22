@@ -22,18 +22,18 @@ function SidebarDataset({isDarkMode}) {
         <h1 className='knowledgeSidebar'>Knowledge</h1>
        
         <Popup
-         className="popupclass" 
+         className="popupclass modaldataset" 
          trigger={<button  id="createfolderbtn" className={`new-chat ${isAnimating ? 'animate' : ''}`}>Create Folder
          <FontAwesomeIcon className='pencilIcon' icon={faPlus} />
          </button>}
           modal>
                 {close => (
-                  <div className="modal modalContainer">
+                  <div className="modaldataset  modalContainer">
                     <button className="close" onClick={close}>
                       &times;
                     </button>
                     <div className="header headingCreateFolder">Create a Folder</div>
-                    <div className="content">
+                    <div className="contentdataset">
                       <form className="formStyle" >
                         <input  id="categoryinput" type="text" className="fileinput form-control" placeholder="Name the Folder" required/>
                         <button className="btnCLassSubmitupload" type="submit">

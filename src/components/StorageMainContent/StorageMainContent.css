@@ -213,7 +213,7 @@
   padding: 5px;
 }
 
-.modal > .content {
+.modal > .contentstorage {
   
   padding: 10px 5px;
 
@@ -423,4 +423,115 @@
   background-color: #166d0a;
 
   color: white;
+}
+/*modal*/
+
+.modalContainer{
+  height: 150px;
+}
+
+.modalstorage {
+  font-size: 14px;
+  
+}
+
+
+.modalstorage > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+
+.modalstorage > .contentdataset {
+  
+
+  display: flex;
+  flex-direction: column;
+}
+
+.modalstorage > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+
+.modalstorage .popupclass {
+  width: 100px;
+}
+
+.modalstorage > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px; 
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid gray;
+}
+
+.form-control{
+  display: none;
+}
+
+.inputFileClass{
+  border: solid 1px #252525;
+  height: 20px;
+}
+
+
+.formStyle{
+  padding: 20px;
+  width: 280px;
+}
+
+.form-control{
+  border-color: black !important;
+  width: 270px;
+
+  border: solid 1px grey;
+  margin-bottom: 10px;
+
+  display: block;
+}
+
+
+.formStyle{
+  padding: 5px;
+  text-align: center;
+
+}
+
+.form-control{
+  border-color: grey !important;
+  height: 20px;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: stretch;
+
+ 
+}
+
+.modalstorage {
+  font-size: 14px;
+  width: 300px; /* Set the desired width */
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  height: 150px;
+  justify-content: center;
+
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+#modalStorage{
+  height: 300px;
 }

@@ -78,15 +78,17 @@
 }
 
 
-.modal > .header {
+.modal > .headerclient {
   width: 100%;
   border-bottom: 1px solid gray;
   font-size: 18px;
   text-align: center;
   padding: 5px;
+  color: #000;
+  margin-bottom: 10px;
 }
 
-.modal > .content {
+.modal > .contentClient {
   
 
   display: flex;
@@ -205,4 +207,8 @@
 
 .modal2{
     height: 500px;
+}
+
+#modalClient{
+  height: 500px;
 }

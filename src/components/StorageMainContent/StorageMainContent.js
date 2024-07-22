@@ -271,12 +271,12 @@ const renderFilePreview = (file) => {
               <h3 className="storagenamehead">Knowledge Base</h3>
               <Popup className="popupclass" trigger={<button id="uploadbtn" className="storagebtn">Upload</button>} modal>
                 {close => (
-                  <div className="modal">
+                  <div id="modalStorage" className="modalstorage modal">
                     <button className="close" onClick={close}>
                       &times;
                     </button>
                     <div className="header">Upload File</div>
-                    <div className="content">
+                    <div className="contentstorage">
                       <form className="formStyle" onSubmit={submitFile}>
                         <input onChange={(e)=>setCategory(e.target.value)} id="categoryinput" type="text" className="fileinput form-control" placeholder="Category" required/>
                         <input

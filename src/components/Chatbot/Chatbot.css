@@ -283,7 +283,7 @@
 }
 
 
-.modal-prompt > .content {
+.modal-prompt > .content2 {
   
   padding: 10px 5px;
 
@@ -399,13 +399,13 @@
   color: #000000;
 }
 
-.content {
+.content2 {
   margin-top: 10px;
   padding-left: 20px;
   transition: ease 2s;
 }
 
-.content p {
+.content2 p {
   margin: 5px 0;
 }
 
@@ -478,7 +478,7 @@
 .promptPopupDescript{
   color: white;
 }
-.content{
+.content2{
   border-radius: 10px;
 }
 .modal-prompt{

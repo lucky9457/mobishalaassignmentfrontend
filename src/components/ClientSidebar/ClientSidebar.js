@@ -28,12 +28,12 @@ function ClientSidebar({isDarkMode}) {
          </button>}
           modal>
                 {close => (
-                  <div className="modal modalContainer2">
+                  <div id='modalClient' className="modal modalContainer2">
                     <button className="close" onClick={close}>
                       &times;
                     </button>
-                    <div className="header headingCreateFolder">Create a Client</div>
-                    <div className="content">
+                    <div className="headerclient headingCreateFolder">Create a Client</div>
+                    <div className="contentClient">
                       <form className="formStyle" >
                         <input  id="categoryinput" type="text" className="fileinput form-control" placeholder="Name the Folder" required/>
                         <input  id="SerialNumber" type="text" className="fileinput form-control" placeholder="SerialNumber" required/>

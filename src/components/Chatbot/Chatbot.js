@@ -422,7 +422,7 @@ const Chatbot = ({isDarkMode}) => {
 
 
                 <div className="header">Prompts Base</div>
-                <div className="content">
+                <div className="content2">
                   <p className="promptPopupDescript">Choose the prompt that suits you best. Once you click, it'll appear in the text input field. You can then send it as is or add your own words.</p>
                   <div className="customPromptinputContainer">
                     <input placeholder="create a custom" id="customPromptInputEle" className="inputPrompt" type="text" onChange={changesearchPrompt}/>
