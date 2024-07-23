@@ -210,9 +210,18 @@
 }
 
 #modalClient{
-  height: 450px;
+  height: 300px;
 }
 /*
 #sidebarClient{
   width: 310px;
 }*/
+
+.success {
+  color: green;
+  margin-top: 10px;
+}
+.error {
+  color: red;
+  margin-top: 10px;
+}

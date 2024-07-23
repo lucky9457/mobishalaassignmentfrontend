@@ -1,13 +1,25 @@
-import "./ClientTableView.css"
-import "../StorageMainContent/StorageMainContent.css"
-import React, { useState } from 'react';
-
+import "./ClientTableView.css";
+import "../StorageMainContent/StorageMainContent.css";
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { ClipLoader } from 'react-spinners';
+import axios from "axios";
 
+const ClientTableView = ({ isDeleting,successMessage,clients,handleDelete }) => {
+    const [searchTerm, setSearchTerm] = React.useState("");
+ 
 
-const ClientTableView = () => {
-    const a="a"
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const filteredClients = clients.filter(client => 
+        client.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    
+
     return (
         <div className="tableSearchTable tablesearchVw">
             <div className="searchrow">
@@ -16,40 +28,55 @@ const ClientTableView = () => {
                     <input className="searchEle"
                         type="search"
                         id="searchElement"
-                      
-                        placeholder="Search files..."
-                        />
+                        placeholder="Search clients..."
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                    />
                 </div>
             </div>
 
-            <div className="table-container">
+            {successMessage && <div className="floating-message">{successMessage}</div>}
+
+            <div id="tablecontainerclient" className="table-container">
                 <table className="user-table">
                     <thead>
                         <tr>
-                            <th>Type</th>
-                            <th>Category</th>
+                            <th>S.No</th>
                             <th>Name</th>
-                            <th>Uploaded Date</th>
-                            <th>Filesize</th>
-                            <th>View</th>
-                           
-                            <th>Delete</th>
+                            <th id="emilll" className="emailll">Email</th>
+                            <th>Mobile Number</th>
+                            <th>Remarks</th>
+                            <th>Created At</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <td>hn</td>
-                        <td>ss</td>
-                        <td>ss</td>
-                        <td>ss</td>
-                        <td>ss</td>
-                        <td>ss</td>
-                        <td>ss</td>
-
-                        
+                        {filteredClients.map(client => (
+                            <tr key={client._id}>
+                                <td>{client.sNo}</td>
+                                <td>{client.name}</td>
+                                <td >{client.email}</td>
+                                <td>{client.mobileNumber}</td>
+                                <td>{client.remarks}</td>
+                                <td>{client.createdAt}</td>
+                                <td>
+                                    <button className="btnIcon btnView">
+                                        <FontAwesomeIcon icon={faEye} />
+                                    </button>
+                                    <button
+                                        className="btnIcon btnDelete"
+                                        onClick={() => handleDelete(client._id)}
+                                    >
+                                        {isDeleting[client._id] ? <ClipLoader size={16} color="#ffffff" /> : <FontAwesomeIcon icon={faTrash} />}
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
-            </div></div>
-    )
-}
+            </div>
+        </div>
+    );
+};
 
-export default ClientTableView
+export default ClientTableView;
