@@ -1,6 +1,7 @@
 import "./ClientTableView.css";
 import "../StorageMainContent/StorageMainContent.css";
 import React from 'react';
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ClipLoader } from 'react-spinners';
@@ -58,11 +59,14 @@ const ClientTableView = ({ isDeleting,successMessage,clients,handleDelete }) => 
                                 <td >{client.email}</td>
                                 <td>{client.mobileNumber}</td>
                                 <td>{client.remarks}</td>
-                                <td>{client.createdAt}</td>
+                                <td>{client.createdAt}</td> 
                                 <td>
+                                    <Link to={`/clientprofile/${client._id}`}>
                                     <button className="btnIcon btnView">
                                         <FontAwesomeIcon icon={faEye} />
                                     </button>
+                                    </Link>
+                                    
                                     <button
                                         className="btnIcon btnDelete"
                                         onClick={() => handleDelete(client._id)}

@@ -1,63 +1,87 @@
-import "./ClientDataset.css"
-import React, { useState } from 'react';
+import "../ClientDataset/ClientDataset.css"
+import "./ClientProfileView.css"
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMicrophone,faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faMicrophone, faTrash } from '@fortawesome/free-solid-svg-icons';
 import SideNavigationBar from '../SideNavigationBar/SideNavigationBar';
 import ClientSidebar from '../ClientSidebar/ClientSidebar';
+import { ClipLoader } from 'react-spinners';
+import axios from 'axios';
+import { useTheme } from "../ThemeContext";
 
 const ClientProfileView = () => {
-    const a = "a"
+    const { isDarkMode, toggleTheme } = useTheme();
+    const { id } = useParams(); // Get the client ID from the URL
+    const [client, setClient] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchClient = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/clients/${id}`);
+                setClient(response.data);
+            } catch (error) {
+                setError(error.response ? error.response.data.error : 'An error occurred');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchClient();
+    }, [id]);
+
+    
+    console.log(client)
+
     return (
         <div className={`storageMainContainer ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
             <SideNavigationBar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
-            <div className="Storage-containerDatset">
+            {/*<div className="Storage-containerDatset">
                 <ClientSidebar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
-            </div>
-            <div class="containerClient">
-                <div class="headerClientset">
-                    <div class="profile">
-                        <div class="photo">Photo</div>
-                        <div class="info">
-                            <p>Name</p>
-                            <p>Number</p>
-                            <p>Email</p>
+            </div>*/}
+            {loading ? (
+            <div className="loaderContainer">
+                <ClipLoader size={50} />
+            </div>) :
+                <div className="containerClient">
+                    <div className="headerClientset">
+                        <div className="profile">
+                            <div className="photo">Photo</div>
+                            <div className="info">
+                                <p>{client.name}</p>
+                                <p>{client.mobileNumber}</p>
+                                <p>{client.email}</p>
+                            </div>
+                        </div>
+                        <div className="assistant">
+                            <div className="icon"><FontAwesomeIcon icon={faMicrophone} /></div>
+                            <p>Client Assistant</p>
                         </div>
                     </div>
-                    <div class="assistant">
-                        <div class="icon"><FontAwesomeIcon icon={faMicrophone} /></div>
-                        <p>Client Assistant</p>
-                    </div>
-                </div>
-                <ul class="navbar">
-                    <li class="nav-item">Cases</li>
-                    <li class="nav-item">Documents</li>
-                    <li class="nav-item">Assistant</li>
-                    <li class="nav-item">Conversation</li>
-                    <li class="nav-item">Message</li>
-                    <li class="nav-item">Billings</li>
-                    <li class="nav-item">Profile</li>
-                </ul>
-                <div class="content">
-                    <div class="toolbar">
-                        <div class="tool">Model</div>
-                        <div class="tool">Transcriber</div>
-                        <div class="tool">Voice</div>
-                        <div class="tool">Functions</div>
-                        <div class="tool">Advanced</div>
-                        <div class="tool">Analysis</div>
-                    </div>
-                    <div class="editor">
-                        <div className='publishDeleteContainer'>
-                            <button class="publish">Publish</button>
-                            <button class="delete"><FontAwesomeIcon className='icondelete' icon={faTrash} /></button>
+                    
+                    <div className="content">
+                        <div className="toolbar">
+                            <div className="tool">Cases</div>
+                            <div className="tool">Documents</div>
+                            <div className="tool">Assistant</div>
+                            <div className="tool">Conversation</div>
+                            <div className="tool">Message</div>
+                            <div className="tool">Billings</div>
+                            <div className="tool">Profile</div>
                         </div>
-
-                        <p>Draft saved 1 minute ago.</p>
+                        <div className="editor">
+                            <div className='publishDeleteContainer'>
+                                <button className="publish">Publish</button>
+                                <button className="delete"><FontAwesomeIcon className='icondelete' icon={faTrash} /></button>
+                            </div>
+                            <p>Draft saved 1 minute ago.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </div>}
         </div>
     )
 }
 
-export default ClientProfileView
+export default ClientProfileView;

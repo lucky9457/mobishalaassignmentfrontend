@@ -8,6 +8,7 @@ import Profiles from './components/Profiles/Profiles';
 import VoiceAIComponent from './components/VoiceAIComponent/VoiceAiComponent';
 import './Home.css';
 import ClientDataset from './components/ClientDataset/ClientDataset';
+import ClientProfileView from './components/ClientProfileView/ClientProfileView';
 
 const App = () => {
   useEffect(() => {
@@ -21,7 +22,7 @@ const App = () => {
       <Route exact path='/dataset' Component={StorageComponent}/>
       <Route exact path="/" Component={VoiceAIComponent}/>
       <Route exact path ="/clientDataset" Component={ClientDataset}/>
-      
+      <Route exact path="/clientprofile/:id" Component={ClientProfileView}/>
       <Route exact path="/search" Component={Search}/>
       <Route exact path="/profiles" Component={Profiles}/>
       
