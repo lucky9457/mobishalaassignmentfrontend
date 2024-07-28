@@ -9,6 +9,7 @@ import VoiceAIComponent from './components/VoiceAIComponent/VoiceAiComponent';
 import './Home.css';
 import ClientDataset from './components/ClientDataset/ClientDataset';
 import ClientProfileView from './components/ClientProfileView/ClientProfileView';
+import Login from './components/Login/Login';
 
 const App = () => {
   useEffect(() => {
@@ -18,6 +19,7 @@ const App = () => {
   <BrowserRouter>
   <ThemeProvider>
     <Routes>
+      <Route exact path='/login' Component={Login}/>
       <Route exact path="/chat" Component={Home}/>
       <Route exact path='/dataset' Component={StorageComponent}/>
       <Route exact path="/" Component={VoiceAIComponent}/>
