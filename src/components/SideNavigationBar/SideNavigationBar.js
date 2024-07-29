@@ -1,12 +1,25 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun,faUsers, faHeadset,faMoon, faMagnifyingGlass, faUser, faCloud, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faSun,faUsers,faRightFromBracket, faHeadset,faMoon, faMagnifyingGlass, faUser, faCloud, faComment } from '@fortawesome/free-solid-svg-icons';
 import './SideNavigationBar.css';
+import { IoLogOut } from 'react-icons/io5';
+
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 function SideNavigationBar({ toggleTheme, isDarkMode }) {
   const location = useLocation();
   const darkmodeclass = isDarkMode ? "whiteimage" : "";
+
+  const navigate = useNavigate();
+
+  const onLogOut=()=>{
+    Cookies.remove('token');
+
+    // Redirect to the login page or home page
+    navigate('/login');
+  }
 
   return (
     <div className={`side-navigation-bar ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
@@ -64,7 +77,10 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
       </div>
       
       <ul className='tabiconsContainer'>
-        <li onClick={toggleTheme} className="litag theme-toggle">
+        <li onClick={onLogOut} className="litag theme-toggle">
+        <FontAwesomeIcon icon={faRightFromBracket} />
+        </li>
+        <li onClick={toggleTheme} className="theme-togglemain litag theme-toggle">
           <FontAwesomeIcon className='iconToggle' icon={isDarkMode ? faSun : faMoon} />
         </li>
       </ul>

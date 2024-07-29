@@ -5,7 +5,7 @@ import SideNavigationBar from '../SideNavigationBar/SideNavigationBar';
 import ClientSidebar from '../ClientSidebar/ClientSidebar';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import Cookies from 'js-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Popup from "reactjs-popup";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -29,14 +29,19 @@ function ClientDataset() {
     const [successMessage, setSuccessMessage] = React.useState("");
 
     useEffect(() => {
-        
+
 
         fetchClients();
     }, []);
 
     const fetchClients = async () => {
         try {
-            const response = await axios.get('https://legai.onrender.com/clients');
+            const token = Cookies.get('token'); // Get the token from cookies
+            const response = await axios.get('https://legai.onrender.com/clients', {
+                headers: {
+                    'Authorization': `Bearer ${token}` // Include token in headers
+                }
+            });
             setClients(response.data);
         } catch (error) {
             console.error("Error fetching clients:", error);
@@ -51,9 +56,15 @@ function ClientDataset() {
     };
 
     const handleDelete = async (id) => {
+
         setIsDeleting(prev => ({ ...prev, [id]: true }));
         try {
-            await axios.delete(`https://legai.onrender.com/clients/${id}`);
+            const token = Cookies.get('token'); // Get the token from cookies
+            await axios.delete(`https://legai.onrender.com/clients/${id}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}` // Include token in headers
+                }
+            });
             setSuccessMessage("Client deleted successfully!");
             fetchClients();
             setTimeout(() => setSuccessMessage(""), 3000);
@@ -71,7 +82,12 @@ function ClientDataset() {
         setSuccess(null);
 
         try {
-            const response = await axios.post('https://legai.onrender.com/clients', formData);
+            const token = Cookies.get('token'); // Get the token from cookies
+            const response = await axios.post('https://legai.onrender.com/clients', formData, {
+                headers: {
+                    'Authorization': `Bearer ${token}` // Include token in headers
+                }
+            });
             console.log('Client created:', response.data);
             setSuccess('Client created successfully!');
             setShowSuccessMessage(true);
@@ -81,10 +97,9 @@ function ClientDataset() {
                 email: '',
                 remarks: ''
             });
-            
+
             // Refresh client list
-            const updatedResponse = await axios.get('https://legai.onrender.com/clients');
-            setClients(updatedResponse.data);
+            
 
             closePopup();
             setTimeout(() => {
@@ -139,16 +154,17 @@ function ClientDataset() {
                                         <button className="btnCLassSubmitupload" type="submit">
                                             {uploadingFile ? <ClipLoader size={16} color="#ffffff" /> : 'Create Client'}
                                         </button>
-                                        {error && <p className="error">{error}</p>}
-                                        {success && <p className="success">{success}</p>}
+                                        {error && error == "Authentication required" ? "" : <p className="error">{error}</p>}
+                                       
                                     </form>
                                 </div>
                             </div>
                         )}
                     </Popup>
                 </div>
-                <ClientTableView successMessage={successMessage} isDeleting={isDeleting} handleDelete={handleDelete} clients={clients} />
                 {showSuccessMessage && <div className="floating-success-message">{success}</div>}
+                <ClientTableView successMessage={successMessage} isDeleting={isDeleting} handleDelete={handleDelete} clients={clients} />
+    
             </div>
         </div>
     );

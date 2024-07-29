@@ -39,8 +39,8 @@ function ClientSidebar({ isDarkMode, handleSubmit, formData, handleChange, uploa
                   <button className="btnCLassSubmitupload" type="submit">
                     {uploadingFile ? <ClipLoader size={16} color="#ffffff" /> : 'Create Client'}
                   </button>
-                  {error && <p className="error">{error}</p>}
-                  {success && <p className="success">{success}</p>}
+                  {error && error=="Authentication required"? "": <p className="error">{error}</p>}
+                  
                 </form>
               </div>
             </div>

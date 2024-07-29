@@ -8,6 +8,7 @@ import SideNavigationBar from '../SideNavigationBar/SideNavigationBar';
 import ClientSidebar from '../ClientSidebar/ClientSidebar';
 import { ClipLoader } from 'react-spinners';
 import axios from 'axios';
+import Cookies from "js-cookie"
 import { useTheme } from "../ThemeContext";
 
 const ClientProfileView = () => {
@@ -20,7 +21,13 @@ const ClientProfileView = () => {
     useEffect(() => {
         const fetchClient = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/clients/${id}`);
+                const token = Cookies.get('token'); // Get the token from cookies
+                const response = await axios.get(`https://legai.onrender.com/clients/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}` // Include token in headers
+                    }
+                });
+               
                 setClient(response.data);
             } catch (error) {
                 setError(error.response ? error.response.data.error : 'An error occurred');
@@ -32,7 +39,7 @@ const ClientProfileView = () => {
         fetchClient();
     }, [id]);
 
-    
+
     console.log(client)
 
     return (
@@ -42,9 +49,9 @@ const ClientProfileView = () => {
                 <ClientSidebar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
             </div>*/}
             {loading ? (
-            <div className="loaderContainer">
-                <ClipLoader size={50} />
-            </div>) :
+                <div className="loaderContainer">
+                    <ClipLoader size={50} />
+                </div>) :
                 <div className="containerClient">
                     <div className="headerClientset">
                         <div className="profile">
@@ -60,7 +67,7 @@ const ClientProfileView = () => {
                             <p>Client Assistant</p>
                         </div>
                     </div>
-                    
+
                     <div className="content">
                         <div className="toolbar">
                             <div className="tool">Cases</div>

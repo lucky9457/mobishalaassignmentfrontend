@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import "./styles.css";
-
+import Cookies from "js-cookie"
 import SignInForm from "./SignIn";
 import SignUpForm from "./SignUp";
+import { Navigate } from "react-router-dom";
 
 const  Login =()=> {
   const [type, setType] = useState("signIn");
+  const token = Cookies.get("token")
+
+  if(token!=undefined){
+    return <Navigate to="/"/>
+  }
+  
   const handleOnClick = text => {
     if (text !== type) {
       setType(text);
