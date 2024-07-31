@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun,faUsers,faRightFromBracket, faHeadset,faMoon, faMagnifyingGlass, faUser, faCloud, faComment } from '@fortawesome/free-solid-svg-icons';
 import './SideNavigationBar.css';
 import { IoLogOut } from 'react-icons/io5';
+import { googleLogout } from '@react-oauth/google';
+
+
 
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +18,7 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
   const navigate = useNavigate();
 
   const onLogOut=()=>{
+    googleLogout();
     Cookies.remove('token');
 
     // Redirect to the login page or home page
