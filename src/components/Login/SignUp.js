@@ -19,7 +19,7 @@ function SignUpForm() {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:5000/register", {
+      const response = await axios.post("https://legai.onrender.com/register", {
         username,
         password,
       });
@@ -39,7 +39,7 @@ function SignUpForm() {
   const register = useGoogleLogin({
     onSuccess: async (response) => {
       try {
-        const res = await axios.post('http://localhost:5000/google-register', {
+        const res = await axios.post('https://legai.onrender.com/google-register', {
           token: response.credential
         });
         setMessage(res.data.message);
@@ -69,14 +69,14 @@ function SignUpForm() {
     try {
       document.getElementById("usernameSignup").value=""
       document.getElementById("passwordSignup").value=""
-      const response = await axios.post("http://localhost:5000/register", {
+      const response = await axios.post("https://legai.onrender.com/register", {
         "username":email,
             "password":name,
       });
       setMessage(response.data.message);
       if(response.data.message=="User registered successfully"){
         try {
-          const response = await axios.post("http://localhost:5000/login", {
+          const response = await axios.post("https://legai.onrender.com/login", {
             "username":email,
             "password":name,
           });

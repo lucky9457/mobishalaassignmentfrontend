@@ -19,7 +19,7 @@ const SignInForm = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/login", {
+      const response = await axios.post("https://legai.onrender.com/login", {
         username,
         password,
       });
@@ -73,7 +73,7 @@ const SignInForm = () => {
     try {
       document.getElementById("password").value=""
       document.getElementById("username").value=""
-      const response = await axios.post("http://localhost:5000/login", {
+      const response = await axios.post("https://legai.onrender.com/login", {
         "username":email,
         "password":name,
       });
