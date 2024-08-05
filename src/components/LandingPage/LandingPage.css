@@ -127,6 +127,7 @@
 .super-inner-image36 {
     margin-top: 13%;
     /* height:97%; */
+    box-shadow: rgb(0, 255, 229) 0px 5px 15px;
     width: 89%;
     object-fit: contain;
     border-radius: 18px;
@@ -214,6 +215,7 @@
 
 .super-inner-image {
     margin-top: 19%;
+    box-shadow: rgb(0, 255, 229) 0px 5px 15px;
     /* height:97%; */
     width: 89%;
     object-fit: contain;
@@ -276,6 +278,7 @@
 .super-inner-image-page2 {
     border-radius: 17px;
     margin-top: 10%;
+    box-shadow: rgb(0, 255, 229) 0px 5px 15px;
     /* height:97%; */
     width: 79%;
     object-fit: contain;
@@ -322,6 +325,7 @@
 .super-inner-image4 {
     border-radius: 17px;
     margin-top: 10%;
+    box-shadow: rgb(0, 255, 229) 0px 5px 15px;
     /* height:97%; */
     width: 81%;
     object-fit: contain;
@@ -380,6 +384,7 @@
     /* padding-left:5%; */
     /* padding-left:1%; */
     box-sizing: border-box;
+
 }
 
 .landing-container-page6>.super-inner-left {
@@ -428,6 +433,7 @@
 .super-inner-image6 {
     border-radius: 17px;
     margin-top: 10%;
+    box-shadow: rgb(0, 255, 229) 0px 5px 15px;
     /* height:97%; */
     width: 82%;
     object-fit: contain;
@@ -940,6 +946,7 @@
 .super-inner-image2 {
     border-radius: 17px;
     margin-top: 10%;
+    box-shadow: rgb(0, 255, 229) 0px 5px 15px;
     /* height:97%; */
     width: 79%;
     object-fit: contain;
@@ -1302,6 +1309,7 @@
         width: 100%;
         margin-left: 10%;
         /* height:50%; */
+
     }
 
     .footer-items {
@@ -1437,4 +1445,74 @@
 
 .navbar-mobile-menu-icon {
     cursor: pointer;
+}
+
+/*button animation*/
+.start-now-btn {
+    position: relative;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #000000;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.start-now-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+
+    border-radius: 20px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-left: 2px solid transparent;
+    animation: borderAnimation 5s linear infinite;
+    z-index: -1;
+}
+
+@keyframes borderAnimation {
+    0% {
+        border-top: 2px solid #fff;
+        border-right: 2px solid transparent;
+        border-bottom: 2px solid transparent;
+        border-left: 2px solid transparent;
+    }
+
+    25% {
+        border-top: 2px solid #fff;
+        border-right: 2px solid #fff;
+        border-bottom: 2px solid transparent;
+        border-left: 2px solid transparent;
+    }
+
+    50% {
+        border-top: 2px solid transparent;
+        border-right: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        border-left: 2px solid transparent;
+    }
+
+    75% {
+        border-top: 2px solid transparent;
+        border-right: 2px solid transparent;
+        border-bottom: 2px solid #fff;
+        border-left: 2px solid #fff;
+    }
+
+    100% {
+        border-top: 2px solid #fff;
+        border-right: 2px solid transparent;
+        border-bottom: 2px solid transparent;
+        border-left: 2px solid transparent;
+    }
 }

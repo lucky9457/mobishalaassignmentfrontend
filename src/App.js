@@ -17,7 +17,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 
 const App = () => {
     useEffect(() => {
-        document.title = 'LegAi';
+        document.title = 'Legalee Ai';
     }, []);
 
     return (

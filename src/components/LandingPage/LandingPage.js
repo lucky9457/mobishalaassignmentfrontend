@@ -256,7 +256,7 @@ const LandingPage = () => {
                             </h3>
                         </div>
                         <div className='landing-btns7'>
-                            <button className='start-now-btn2' onClick={() => { setShowModal(true) }}>Get Started</button>
+                            <button className='start-now-btn' onClick={() => { setShowModal(true) }}>Get Started</button>
                             <button className='sign-in-btn'>Check out our solutions</button>
                         </div>
 
@@ -313,7 +313,7 @@ const LandingPage = () => {
                             </h3>
                         </div>
                         <div className='landing-btns6'>
-                            <button className='start-now-btn3' onClick={() => { setShowModal(true) }}>Get Started</button>
+                            <button className='start-now-btn' onClick={() => { setShowModal(true) }}>Get Started</button>
                             <button className='sign-in-btn' >Check out our solutions</button>
                         </div>
                     </div>
@@ -379,7 +379,7 @@ const LandingPage = () => {
                             </h3>
                         </div>
                         <div className='landing-btns7'>
-                            <button className='start-now-btn4' onClick={() => { setShowModal(true) }}>Get Started</button>
+                            <button className='start-now-btn' onClick={() => { setShowModal(true) }}>Get Started</button>
                             <button className='sign-in-btn' >Check out our solutions</button>
                         </div>
 
@@ -410,7 +410,7 @@ const LandingPage = () => {
                                 Integrate AI tools to optimize and automate repetitive tasks, improving overall operational efficiency and productivity.</h3>
                         </div>
                         <div className='landing-btns6'>
-                            <button className='start-now-btn5' onClick={() => { setShowModal(true) }}>Get Started</button>
+                            <button className='start-now-btn' onClick={() => { setShowModal(true) }}>Get Started</button>
                             <button className='sign-in-btn' style={{ marginTop: "3px", paddingBottom: "2px", height: "32px" }} >Check out our solutions</button>
                             {/* <hr className='sign-in-line'/> */}
                         </div>
@@ -502,6 +502,7 @@ const LandingPage = () => {
             {signInModal &&
                 <div className='signInForm'>
                     <div className='signInInner'>
+
                         {loading ? <div className='loading-container'>
                             <ColorRing
                                 visible={true}
