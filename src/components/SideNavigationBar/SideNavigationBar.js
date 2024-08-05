@@ -39,7 +39,7 @@ function SideNavigationBar({ toggleTheme, isDarkMode }) {
         )}
 
         <ul className='tabiconsContainer'>
-          <Link className='linkele' to="/">
+          <Link className='linkele' to="/voiceAi">
             <li className={`litag ${location.pathname === "/" ? 'active' : ''}`}>
               {/*<FontAwesomeIcon icon={faHeadset} />*/}
               <img src='https://res.cloudinary.com/dcwxu3d5g/image/upload/v1721306399/Task%20internship/bot_icon_tfcqux.png' alt="roboAiNav" className='roboaiiconNav' />

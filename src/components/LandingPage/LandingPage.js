@@ -143,7 +143,9 @@ const LandingPage = () => {
             Cookies.set("token", response.data.token, { expires: 7 });
             setMessage("User logged in successfully!");
             toast.success("User logged in successfully!")
+            setTimeout(() => setMessage(""), 4000);
             navigate("/voiceAi");
+
         } catch (error) {
             toast.error(`Error: ${error.response?.data?.error || "Network Error"}`);
             setMessage(`Error: ${error.response?.data?.error || "Network Error"}`);
@@ -161,7 +163,7 @@ const LandingPage = () => {
             <div className="landing-container" >
                 {<div className="navbar-landing">
                     <div className='navbar-left'>
-                        <p onClick={() => { navigate('/') }} style={h3Style}>LegAI</p>
+                        <p onClick={() => { navigate('/') }} style={h3Style}>Legalee Ai</p>
                         <p onClick={() => { navigate('/') }}>Home</p>
                         <p>About</p>
                         <p onClick={() => { setIsPlaying(p => !p) }}>Business</p>
@@ -173,7 +175,7 @@ const LandingPage = () => {
                 </div>}
                 <div className="navbar-landing-mobile">
                     <div className='navbar-left'>
-                        <h3 onClick={() => { navigate('/voiceAi') }}>Wizzmedia</h3>
+                        <h3 onClick={() => { navigate('/voiceAi') }}>Legalee Ai</h3>
                     </div>
                     <div className='navbar-right'>
                         {/* <p>Help</p> */}
@@ -530,7 +532,7 @@ const LandingPage = () => {
                                 <img src="https://res.cloudinary.com/dcwxu3d5g/image/upload/v1722837791/Task%20internship/497f5747-7b97-4a71-be27-7d3ef1f5f4cc.png" alt="google" className='signup-google-image' />
                                 <p>Talk to Us</p>
                             </Link>
-                            {message && <p>{message}</p>}
+                            {message && <p className="floating-message-login">{message}</p>}
                         </>}
                     </div>
                 </div>

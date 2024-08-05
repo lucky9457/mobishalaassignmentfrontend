@@ -1,14 +1,14 @@
-import React,{useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './Sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPencil} from '@fortawesome/free-solid-svg-icons'
+import { faPencil } from '@fortawesome/free-solid-svg-icons'
 import { json } from 'react-router-dom';
 
-function Sidebar({clickprevious,handleNewChat,isDarkMode, recentQueries }) {
+function Sidebar({ clickprevious, handleNewChat, isDarkMode, recentQueries }) {
   const [isAnimating, setIsAnimating] = useState(false);
-  const clicktheHistory = (message)=>{
-      clickprevious(message)
-      console.log('thismsg',message)
+  const clicktheHistory = (message) => {
+    clickprevious(message)
+    console.log('thismsg', message)
   }
 
   const handleNewChatClick = () => {
@@ -20,11 +20,11 @@ function Sidebar({clickprevious,handleNewChat,isDarkMode, recentQueries }) {
 
 
   let historyuser = localStorage.getItem("history") || "[]"
-  try{
+  try {
     historyuser = JSON.parse(historyuser).reverse();
-  }catch(error){
+  } catch (error) {
     console.log(error)
-    historyuser=[]
+    historyuser = []
   }
   /*
   if(historyuser!=null && historyuser!= "[]"){
@@ -35,37 +35,37 @@ function Sidebar({clickprevious,handleNewChat,isDarkMode, recentQueries }) {
     historyuser=[]
   }
   */
-  
+
   return (
     <div className={`sidebar ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-      <h1 className='LegAiLOGOName'>LegAi</h1>
+      <h1 className='LegAiLOGOName'>Legalee Ai</h1>
       <button className="activate-pro">Legal Ai Assistant</button>
-      <hr className='linehor'/>
-      
+      <hr className='linehor' />
+
       <div className="pinned-chats">
         <h1>Chats</h1>
         <button onClick={handleNewChatClick} className={`new-chat ${isAnimating ? 'animate' : ''}`}>New Chat
-        <FontAwesomeIcon className='pencilIcon' icon={faPencil} />
+          <FontAwesomeIcon className='pencilIcon' icon={faPencil} />
         </button>
         <h3 className='h3tag'>Pinned chats</h3>
         <p>No pinned chats yet :(</p>
       </div>
       <div className="history">
         <h3 className='h3tag'>History</h3>
-          <div className="recent-queries messageuserhistory">
-            {historyuser.length === 0 || historyuser == null ?  (
-              <p>No History available.</p>
-            ) : (
-              historyuser.map((message, index) => (
-                <div onClick={()=>clicktheHistory(message)} key={index} className="historyItem">
-                  {message[0].text}
-                </div>
-              ))
-            )}
-          </div>
+        <div className="recent-queries messageuserhistory">
+          {historyuser.length === 0 || historyuser == null ? (
+            <p>No History available.</p>
+          ) : (
+            historyuser.map((message, index) => (
+              <div onClick={() => clicktheHistory(message)} key={index} className="historyItem">
+                {message[0].text}
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </div>
-  
+
   );
 }
 

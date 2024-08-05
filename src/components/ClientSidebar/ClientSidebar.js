@@ -10,7 +10,7 @@ function ClientSidebar({ isDarkMode, handleSubmit, formData, handleChange, uploa
 
   return (
     <div id="sidebarClient" className={`sidebar ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-      <h1 className='LegAiLOGOName'>LegAi</h1>
+      <h1 className='LegAiLOGOName'>Legalee Ai</h1>
       <button className="activate-pro">Legal Ai Assistant</button>
       <hr className='linehor' />
 
@@ -39,8 +39,8 @@ function ClientSidebar({ isDarkMode, handleSubmit, formData, handleChange, uploa
                   <button className="btnCLassSubmitupload" type="submit">
                     {uploadingFile ? <ClipLoader size={16} color="#ffffff" /> : 'Create Client'}
                   </button>
-                  {error && error=="Authentication required"? "": <p className="error">{error}</p>}
-                  
+                  {error && error == "Authentication required" ? "" : <p className="error">{error}</p>}
+
                 </form>
               </div>
             </div>
