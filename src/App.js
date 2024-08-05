@@ -12,6 +12,7 @@ import ClientProfileView from './components/ClientProfileView/ClientProfileView'
 import Login from './components/Login/Login';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import LandingPage from './components/LandingPage/LandingPage';
 
 
 const App = () => {
@@ -20,12 +21,13 @@ const App = () => {
     }, []);
 
     return (
-        <GoogleOAuthProvider clientId= {`${process.env.REACT_APP_GOOGLE_CLIENTID}`}>
+        <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_CLIENTID}`}>
             <BrowserRouter>
                 <ThemeProvider>
                     <Routes>
-                        <Route path='/login' element={<Login />} />
-                        <Route path="/" element={<ProtectedRoute element={VoiceAIComponent} />} />
+                        {/*<Route path='/login' element={<Login />} />*/}
+                        <Route path='/' element={<LandingPage />} />
+                        <Route path="/voiceAi" element={<ProtectedRoute element={VoiceAIComponent} />} />
                         <Route path="/chat" element={<ProtectedRoute element={Home} />} />
                         <Route path='/dataset' element={<ProtectedRoute element={StorageComponent} />} />
                         <Route path="/clientDataset" element={<ProtectedRoute element={ClientDataset} />} />

@@ -6,7 +6,7 @@ const ProtectedRoute = ({ element: Component, ...rest }) => {
     const token = Cookies.get('token'); // Check if token exists in cookies
 
     // Render the component if token exists, otherwise redirect to login
-    return token ? <Component {...rest} /> : <Navigate to="/login" />;
+    return token ? <Component {...rest} /> : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;
